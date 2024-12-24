@@ -1,0 +1,56 @@
+<div
+    class="item d-flex align-items-center gap-4 position-relative"
+    [ngClass]="{ primary_address: address.defaultAddress }"
+>
+    <div class="select_address">
+        <label>
+            <input
+                [disabled]="isEditClicked"
+                type="radio"
+                [name]="'radio-group' + address.id"
+                [id]="'defaultAddress' + address.id"
+                [checked]="address.defaultAddress"
+                (change)="changedDefaultAddress(address.id)"
+            />
+        </label>
+    </div>
+    <div>
+        <div class="title_b d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+                <a href="javascript:;"
+                (click)="editAddress()"
+                class="edit font-medium"
+                    ><i class="fa-regular fa-pen-to-square"></i
+                ></a>
+                <a  href="javascript:;" class="delete font-medium"
+                  (click)="deleteAddress(address.id)"
+                    ><i class="fa-regular fa-trash-can"></i
+                ></a>
+            </div>
+        </div>
+        <div class="d-flex align-items-start gap-4 mb-2">
+            <span>{{ "FullName" | translate }}</span>
+            <div>
+                <p>{{ address.fullname }}</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start gap-4 mb-2">
+            <span>{{ "Address" | translate }}</span>
+            <div>
+                <p class="font-medium">
+                    {{ address.buildingNumber  }} - {{ address.streetAddress }} -
+                    {{ address.state }}
+                </p>
+                <small
+                    >{{ address.cityName }},{{ address.countryName }}</small
+                >
+            </div>
+        </div>
+        <div class="d-flex align-items-start gap-4">
+            <span>{{ "PhoneNumber" | translate }}</span>
+            <div>
+                <p> {{address.countryCode}} {{ address.phoneNumber }}</p>
+            </div>
+        </div>
+    </div>
+</div>

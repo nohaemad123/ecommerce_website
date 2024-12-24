@@ -1,0 +1,25 @@
+<div class="row p-4">
+    <div class="col-6 category_modal_single" *ngFor="let category of categories">
+
+
+        <a
+            (click)="onCategoryClicked(category.id)"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{
+                exact: true
+            }"
+        >
+        <img
+
+        [src]="
+                    category.logo
+                        ? (imgBaseUrl +category.logo)
+                        : imagesFallbackService.handleCategoryFallback
+                " alt="image"
+                 (error)="imagesFallbackService.handleCategoryFallback($event)"
+                 class="category-image"
+        >
+            {{ category.name }}
+        </a>
+    </div>
+</div>

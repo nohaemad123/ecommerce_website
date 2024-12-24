@@ -1,0 +1,83 @@
+<div class="border p-4 my-profile-page my_order" (click)="openOrderDetails()">
+    <div class="d-flex align-items-center justify-content-between mob_t">
+        <div class="head">
+            <h3 class="font-medium">{{'Order.myorder'|translate}}</h3>
+            <small>
+                {{'Order.Manage_edit'|translate}}
+            </small>
+        </div>
+        <div class="order_number">
+            <span>#{{order.orderNumber}}</span>
+            <small>
+                {{order.orderDate | date:'dd-MM-yyyy | hh:mm:ss a '}}
+            </small>
+        </div>
+    </div>
+    <!-- Product tracking -->
+    <!-- <div class="product_tracking d-flex align-items-center mt-5">
+        <div class="flex-fill text-center active">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span> Confirmed </span>
+            </div>
+        </div>
+        <div class="flex-fill text-center sub_active">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span> Preparing </span>
+            </div>
+        </div>
+        <div class="flex-fill text-center">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span> Shipped </span>
+            </div>
+        </div>
+        <div class="flex-fill text-center">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span> Delivered </span>
+            </div>
+        </div>
+    </div> -->
+    <!-- product -->
+    <div class="pro_info">
+        <h3 class="font-medium">
+            {{'Order.Product_info'|translate}}
+        </h3>
+        <div class="d-flex align-items-center gap-3">
+            <div class="img">
+                <img [src]="order.orderDetails[0].image? (imgBaseUrl + order.orderDetails[0].image ): imagesFallbackService.handleProductFallback()"
+                    (error)=" imagesFallbackService.handleProductFallback($event)" width="120" alt="">
+            </div>
+            <div>
+                <small> {{'Order.count'|translate}} {{order.orderDetails[0].quantity}}</small>
+                <p>
+                    {{order.orderDetails[0].productName}}
+                </p>
+                <strong>{{+order.orderDetails[0].unitPrice.toFixed(2)
+                    | customCurrency : currentCurrency}} </strong>
+            </div>
+        </div>
+    </div>
+</div>

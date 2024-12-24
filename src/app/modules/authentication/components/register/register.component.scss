@@ -1,0 +1,209 @@
+.profile-authentication-area {
+    .register {
+        margin: auto;
+    }
+    .box-s{
+        border: 1px solid #eee;
+        padding: 60px 0;
+        background: #fafafa;
+    }
+}
+
+:host ::ng-deep .number_key {
+    padding-inline-end: 0 !important;
+    .ng-select {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
+        height: 100%;
+        background-color: #fff;
+
+        .ng-value-container {
+            justify-content: center;
+        }
+
+        .ng-dropdown-panel {
+            opacity: 1;
+            background: #fff;
+            width: 106px;
+            top: 53px;
+            right: auto;
+            left: 0;
+            border: 1px solid #eee;
+            box-shadow: 0 0 4px 0px #00000026;
+
+        }
+
+        .ng-option {
+            padding-bottom: 10px;
+            text-align: center;
+            padding-top: 8px;
+            font-size: 14px;
+        }
+
+        .ng-option-selected {
+           
+            background: #eee;   
+        }
+    }
+
+}
+
+
+
+.register-form {
+    padding-left: 15px;
+
+    h2 {
+        margin-bottom: 30px;
+        font-size: 30px;
+    }
+
+    form {
+        .form-group {
+            margin-bottom: 25px;
+
+            label {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 12px;
+            }
+        }
+
+        .description {
+            font: {
+                style: italic;
+                size: 14.5px;
+            }
+
+            ;
+
+            margin: {
+                top: -10px;
+                bottom: 0;
+            }
+
+            ;
+        }
+
+        button {
+            border: none;
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: var(--whiteColor);
+            background-color: var(--mainColor);
+            transition: var(--transition);
+            border-radius: 5px;
+            padding: 14px 30px;
+            width: 100%;
+
+            font: {
+                weight: 700;
+                size: var(--fontSize);
+            }
+
+            ;
+
+            &:hover {
+                background-color: var(--blackColor);
+                color: var(--whiteColor);
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .profile-authentication-area .box-s{
+        margin: 0 10px;
+    }
+    
+    .login-form {
+        padding-right: 0;
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    }
+
+    .register-form {
+        padding-left: 0;
+        margin-top: 30px;
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .login-form {
+        padding-right: 0;
+        margin-bottom: 30px;
+
+        h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        form {
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .register-form {
+        padding-left: 0;
+
+        h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        form {
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .login-form {
+        padding-right: 0;
+    }
+
+    .register-form {
+        padding-left: 0;
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}

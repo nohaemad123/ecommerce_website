@@ -1,0 +1,157 @@
+button {
+   border: none;
+   display: block;
+   text-align: center;
+   transition: var(--transition);
+   border-radius: 5px;
+   padding: 14px 30px;
+
+   font: {
+      weight: 700;
+      size: var(--fontSize);
+   }
+
+   &:hover {
+      background-color: var(--blackColor) !important;
+      color: var(--whiteColor);
+   }
+}
+
+.my-profile-page {
+   min-height: 500px;
+}
+
+.listOfAddress {
+   .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+   }
+
+   h3 {
+      font-size: 18px;
+   }
+
+   .item {
+      background-color: #fafafa;
+      padding: 16px;
+      font-size: 14px;
+      border: 1px solid #f3f3f3;
+
+      span {
+         color: #777;
+         min-width: 48px;
+      }
+
+      p {
+         color: #000;
+         margin-bottom: 0;
+
+      }
+
+      small {
+         padding-inline-start: 10px;
+         display: block;
+      }
+   }
+}
+
+.primary_address {
+   background: #e7f4ff78 !important;
+   border: 1px solid #d5eafb !important;
+}
+
+
+.title_b {
+   position: absolute;
+   bottom: 12px;
+   right: 18px;
+
+   .edit {
+      color: #4F008C;
+      font-size: 14px;
+      text-decoration: underline;
+
+      &:hover {
+         opacity: 0.6;
+      }
+   }
+
+   .delete {
+      color: #FF375E;
+      font-size: 14px;
+      text-decoration: underline;
+
+      &:hover {
+         opacity: 0.6;
+      }
+   }
+}
+
+.add_btn {
+   button {
+      margin-left: 0;
+      min-width: auto;
+      max-width: max-content;
+      margin-bottom: 26px;
+      background: #37b169;
+      transition: var(--transition);
+      color: #fff;
+   }
+}
+
+input[type="radio"] {
+   width: 24px;
+   height: 24px;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 991px) {
+   .mobile_nav_order {
+      display: block;
+   }
+
+   .listOfAddress {
+      .grid-container {
+         grid-template-columns: repeat(1, 1fr);
+      }
+   }
+
+   .my-profile-page {
+      .form-group {
+         width: 100% !important;
+      }
+   }
+
+   .mob_t {
+      flex-direction: column;
+      align-items: flex-start !important;
+   }
+
+   .mb_m {
+      margin-bottom: 8px;
+   }
+}
+
+.loading-container {
+   padding-top: 15%;
+   padding-bottom: 15%;
+   text-align: center;
+
+   span {
+      color: var(--mainColor);
+   }
+}
+
+@media only screen and (max-width: 767px) {
+   .listOfAddress {
+      .grid-container {
+         display: grid;
+         grid-template-columns: repeat(1, 1fr);
+         gap: 1.5rem;
+      }
+
+      .status_order_page .title_b {
+         bottom: 2px !important;
+      }
+   }
+}

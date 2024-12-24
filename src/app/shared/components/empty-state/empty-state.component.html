@@ -1,0 +1,7 @@
+<div class="text-center">
+    <h5 class="mb-4">{{ emptyStateData.text }}</h5>
+    <a (click)="onBtnClicked()" href="javascript:;" class="default-btn" dir="auto" *ngIf="emptyStateData.withBtn">
+        <!-- <i class="far fa-hand-point-left"></i> -->
+        {{emptyStateData.btnText}}
+    </a>
+</div>

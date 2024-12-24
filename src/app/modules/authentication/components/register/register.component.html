@@ -1,0 +1,116 @@
+<!-- Profile Authentication -->
+<div class="profile-authentication-area ptb-70">
+    <div class="container">
+        <div class="row box-s">
+            <div class="col-lg-6 col-md-12 col-sm-12 register">
+                <div class="register-form">
+                    <h2>{{'AUTH.REGISTER' | translate}}</h2>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="alert alert-danger" role="alert" *ngIf="error">
+                            <p>{{ error }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'AUTH.LABELS.USERNAME' | translate}}</label>
+                            <input type="text" class="form-control" [placeholder]="'AUTH.LABELS.USERNAME'| translate"
+                                formControlName="name" autofocus
+                                [ngClass]="{ 'is-invalid': (submitted && registerFormControls.name.errors) || (registerFormControls.name.touched && registerFormControls.username.invalid)}">
+                            <div *ngIf="(submitted && registerFormControls.name.errors) || (registerFormControls.name.touched && registerFormControls.name.invalid)"
+                                class="invalid-feedback">
+                                <div *ngIf="registerFormControls.name.errors?.required">
+                                    {{'AUTH.PLACE_HOLDERS.USERNAME' | translate}}
+                                </div>
+                                <div *ngIf="registerFormControls.name.errors?.minlength">
+                                    {{'register.messages.username_minlength' |translate}}</div>
+                                <div *ngIf="registerFormControls.name.errors?.pattern">
+                                    {{'register.messages.username_pattern' |translate}}                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>{{'AUTH.LABELS.EMAIL' | translate}}</label>
+                            <input type="email" class="form-control" [placeholder]="'AUTH.LABELS.EMAIL'| translate"
+                                formControlName="email" tabindex="1"
+                                [ngClass]="{ 'is-invalid': (submitted && registerFormControls.email.errors) || (registerFormControls.email.touched && registerFormControls.email.invalid)}">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted && registerFormControls.email.errors) || (registerFormControls.email.touched && registerFormControls.email.invalid)">
+                                <div *ngIf="registerFormControls.email.errors?.required">{{'AUTH.Email_required' |
+                                    translate}}</div>
+                                <div *ngIf="registerFormControls.email.errors?.email">{{'AUTH.Email_must_be_valid' |
+                                    translate}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'AUTH.LABELS.PASSWORD' | translate}}</label>
+                            <input type="password" formControlName="password" class="form-control" tabindex="2"
+                                aria-describedby="register-password" [ngClass]="{
+                            'is-invalid':
+                              (submitted && registerFormControls.password.errors) ||
+                              (registerFormControls.password.touched && registerFormControls.password.invalid)
+                        }" [placeholder]="'AUTH.LABELS.PASSWORD'| translate">
+
+                            <div *ngIf="(submitted && registerFormControls.password.errors) ||
+                    (registerFormControls.password.touched && registerFormControls.password.invalid)"
+                                class="invalid-feedback">
+                                <div *ngIf="registerFormControls.password.errors?.required">
+                                    {{ "AUTH.password_required" | translate }}
+                                </div>
+                                <div *ngIf="registerFormControls.password.errors?.pattern">
+                                    {{"AUTH.pattern_password"|translate}}
+                                    <br />
+                                    <span> {{"AUTH.Expattern_password"|translate}} </span>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2 number_key">
+                                    <ng-select [searchable]="false" formControlName="countryId" [clearable]="false"
+                                        (change)="onSelectCountryCode($event)">
+                                        <ng-option *ngFor="let country of countries" [value]="country">
+                                            {{ country.countryPhoneCode }}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+
+                                <div class="col-10">
+                                    <input type="tel" formControlName="mobileNumber" class="form-control"
+                                        aria-describedby="register-PHONE_NUMBER"
+                                        [placeholder]="'AUTH.LABELS.PHONE_NUMBER'| translate"
+                                        [ngClass]="{ 'is-invalid':(submitted && registerFormControls.mobileNumber.errors) || (registerFormControls.mobileNumber.touched && registerFormControls.mobileNumber.invalid) }" />
+                                </div>
+                            </div>
+                            <div *ngIf="(submitted && registerFormControls.mobileNumber.errors) || (registerFormControls.mobileNumber.touched && registerFormControls.mobileNumber.invalid)"
+                                class="invalid-feedback">
+                                <div *ngIf="registerFormControls.mobileNumber.errors?.required">
+                                    {{'AUTH.MESSAGES.PHONE_NUMBER_REQUIRED' | translate}}</div>
+                                <div
+                                    *ngIf="registerFormControls.mobileNumber.errors?.maxlength || registerFormControls.mobileNumber.errors?.minlength">
+                                    {{'AUTH.MESSAGES.PHONE_NUMBER_LEAST' |translate: { number:
+                                    registerFormControls.mobileNumber.errors?.maxlength?.requiredLength ?
+                                    registerFormControls.mobileNumber.errors?.maxlength.requiredLength
+                                    : registerFormControls.mobileNumber.errors?.minlength?.requiredLength } }}
+                                </div>
+
+                            </div>
+                        </div>
+                        <button type="submit" [disabled]="loading" tabindex="4" rippleEffect>
+                            <span *ngIf="loading"
+                                class="spinner-border spinner-border-sm mr-1"></span>{{'AUTH.SING_UP_TITLE' |
+                            translate}}
+
+                        </button>
+                        <p class="text-center mt-1 col-12"><span>{{'AUTH.LINKS.HAVE_ACCOUNT' | translate}}</span><a
+                                class="font-bold" (click)="routingService.route('authentication')"
+                                href="javascript:;"><span>&nbsp;{{'AUTH.LOGIN_TITLE' | translate}}</span></a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+
+.profile-authentication-area{
+    .login{
+        margin: auto;
+    }
+    .box-s{
+        border: 1px solid #eee;
+        padding: 60px 0;
+        background: #fafafa;
+    }
+}
+
+.login-form {
+    padding-right: 15px;
+
+
+
+    h2 {
+        margin-bottom: 30px;
+        font-size: 30px;
+    }
+    form {
+        .form-group {
+            margin-bottom: 25px;
+
+            label {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 12px;
+            }
+        }
+        .remember-me-wrap {
+            margin-bottom: 0;
+
+            .form-check {
+                margin-bottom: 0;
+                color: var(--blackColor);
+
+                .form-check-input {
+                    margin-top: .15em;
+                    box-shadow: unset !important;
+
+                    &[type=checkbox] {
+                        border-radius: 0;
+                    }
+                    &:checked {
+                        background-color: var(--mainColor);
+                        border-color: var(--mainColor);
+                    }
+                    &:focus {
+                        border-color: var(--mainColor);
+                    }
+                }
+            }
+        }
+        .lost-your-password-wrap {
+            text-align: end;
+
+            a {
+                display: inline-block;
+                position: relative;
+                line-height: 1.5;
+
+                &::before {
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    content: '';
+                    position: absolute;
+                    transition: var(--transition);
+                    background-color: #eeeeee;
+                }
+                &::after {
+                    width: 0;
+                    height: 1px;
+                    position: absolute;
+                    left: 0;
+                    transition: var(--transition);
+                    bottom: 0;
+                    content: '';
+                    background-color: var(--mainColor);
+                }
+                &:hover {
+                    &::before {
+                        width: 0;
+                    }
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        button {
+            border: none;
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: var(--whiteColor);
+            background-color: var(--mainColor);
+            transition: var(--transition);
+            border-radius: 5px;
+            padding: 14px 30px;
+            width: 100%;
+            font: {
+                weight: 700;
+                size: var(--fontSize);
+            };
+            &:hover {
+                background-color: var(--blackColor);
+                color: var(--whiteColor);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    .login-form form .lost-your-password-wrap a{
+        display: block;
+        text-align: right;
+        margin-top: 15px;
+    }
+    }
+
+@media only screen and (max-width: 767px) {
+.login-form form .lost-your-password-wrap a{
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+}
+
+.profile-authentication-area .box-s{
+    margin: 0 10px;
+}
+}

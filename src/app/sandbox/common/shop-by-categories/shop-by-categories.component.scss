@@ -1,0 +1,198 @@
+.categories-shop-card {
+    text-align: center;
+
+    .categories-image {
+        a {
+            display: block;
+
+            img {
+                width: auto;
+                display: inline-block;
+            }
+        }
+    }
+    .categories-content {
+        background-color: var(--whiteColor);
+        transition: var(--transition);
+        border-radius: 5px;
+        position: relative;
+        padding: 4px 0;
+        margin-top: -15px;
+
+        h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+        span {
+            font-size: 15px;
+            display: inline-block;
+            color: var(--blackColor);
+            transition: var(--transition);
+        }
+    }
+    // &:hover {
+    //     .categories-content {
+    //         background-color: var(--mainColor);
+    //         border-color: var(--mainColor);
+
+    //         h3 {
+    //             a {
+    //                 color: var(--whiteColor);
+    //             }
+    //         }
+    //         span {
+    //             color: var(--whiteColor);
+    //         }
+    //     }
+    // }
+}
+.d-none {
+    &.d-block {
+        display: block !important;
+    }
+}
+.grocery-categories-area {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.grocery-categories-card {
+    background: #FCFAF9;
+    border-radius: 10px;
+    padding: 4px 0;
+    text-align: center;
+    border: 1px solid #f5f5f5;
+    transition: var(--transition);
+
+    .categories-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+    .categories-content {
+        background-color: var(--whiteColor);
+        // border: 1px solid #EFEBEA;
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: -5px;
+        transition: var(--transition);
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 0;
+
+            a {
+                color: var(--blackColor);
+            }
+        }
+        span {
+            font-size: 15px;
+            color: var(--blackColor);
+            display: inline-block;
+            margin-top: 5px;
+            transition: var(--transition);
+        }
+    }
+    &:hover {
+        border: 1px solid var(--groceryColor);
+
+        .categories-content {
+            background-color: var(--groceryColor);
+            // border: 1px solid var(--groceryColor);
+
+            h3 {
+                a {
+                    color: var(--whiteColor);
+                }
+            }
+            span {
+                color: var(--whiteColor);
+            }
+        }
+    }
+}
+.grocery-categories-shape1 {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    transform: translateY(-5%) translateX(-2%);
+    z-index: -1;
+}
+.grocery-categories-shape2 {
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
+    transform: translateY(-2%) translateX(-5%);
+    z-index: -1;
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .categories-shop-card {
+        .categories-content {
+            background-color: transparent;
+            padding: 15px 0 0 0;
+            margin: {
+                left: 0;
+                right: 0;
+            };
+            h3 {
+                font-size: 16px;
+            }
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+    .grocery-categories-shape1, .grocery-categories-shape2 {
+        display: none;
+    }
+
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .categories-shop-card {
+        .categories-content {
+            margin: {
+                left: 15px;
+                right: 15px;
+            };
+            h3 {
+                font-size: 16px;
+            }
+        }
+    }
+    .grocery-categories-shape1, .grocery-categories-shape2 {
+        display: none;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .categories-shop-card {
+        .categories-content {
+            margin: {
+                left: 15px;
+                right: 15px;
+            };
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

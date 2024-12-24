@@ -1,0 +1,211 @@
+<!-- order_details -->
+<div class="border p-4 my-profile-page order_details my_order" *ngIf="orderDetail?.id && !loading">
+    <div class="d-flex align-items-center justify-content-between mob_t">
+        <div class="head">
+            <h3 class="font-medium">
+
+                {{'Order.Order_Details'|translate}}
+
+            </h3>
+            <small>{{'Order.Manage_edit'|translate}}</small>
+        </div>
+        <div class="order_number">
+            <span>#{{orderDetail.orderNumber}}</span>
+        </div>
+    </div>
+    <!-- Product tracking -->
+    <div class="t_p_i d-flex align-items-center justify-content-between mt-5">
+        <h3 class="font-medium">
+            {{'Order.Order_status'|translate}}
+           </h3>
+        <!-- <span>items : <strong>2</strong> </span> -->
+    </div>
+    <div class="product_tracking d-flex align-items-center mt-3 my-5">
+        <!-- <div class="flex-fill text-center active">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span> Confirmed </span>
+            </div>
+        </div> -->
+
+        <div class="flex-fill text-center active" >
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span> {{'Status.'+orderDetail.statusName|translate}} </span>
+            </div>
+        </div>
+
+
+        <div class="flex-fill text-center sub_active" >
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <!-- <i class="fa-solid fa-check"></i> -->
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span>   {{'Status.Preparing'|translate}}</span>
+            </div>
+        </div>
+        <div class="flex-fill text-center">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span>   {{'Status.Shipped'|translate}} </span>
+            </div>
+        </div>
+        <div class="flex-fill text-center">
+            <div class="shap d-flex align-items-center">
+                <div class="circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <span class="line"></span>
+            </div>
+            <div class="t_p_t mt-3">
+                <span>  {{'Status.Delivered'|translate}}  </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- product -->
+    <div class="t_p_i d-flex align-items-center justify-content-between">
+        <h3 class="font-medium">
+            {{'Order.Product_info'|translate}}
+
+
+        </h3>
+        <span>
+            {{'Order.Items'|translate}}
+            <strong>{{orderDetail.orderDetails.length}}</strong> </span>
+    </div>
+    <div class="row all_in">
+        <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12 mb_m" *ngFor="let order of orderDetail?.orderDetails">
+            <div class="pro_info  border p-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="img">
+                        <img [src]="order.image?imgBaseUrl+order.image:'assets/img/home-eight/info-shape.png'"
+
+                        width="120" alt="">
+
+                    </div>
+                    <div>
+                        <small> {{'Order.count'|translate}} {{order.quantity}}</small>
+                        <p>
+                            {{order.productName}}
+                        </p>
+                        <strong>
+                            {{+order.unitPrice.toFixed(2)
+                                | customCurrency : currentCurrency}}
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- info -->
+    <div class="row mt-4">
+        <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12 mb_m">
+            <div class="border p-4 delivery_info">
+                <h4 class="font-medium">
+                    <i class="fa-solid fa-truck"></i>
+                    <span class="mx-1"></span>
+                    {{'Order.Delivery_time'|translate}}
+
+                </h4>
+                <p class="mt-3">
+                    {{'Order.From'|translate}}
+
+                    <strong>2</strong>
+                    {{'Order.To'|translate}}
+                     <strong>{{days}}</strong>
+                    {{'Order.Days'|translate}}
+                    </p>
+            </div>
+        </div>
+        <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="border p-4 delivery_info">
+                <h4 class="font-medium">
+                    <i class="fa-regular fa-credit-card"></i>
+                    <span class="mx-1"></span>
+
+                    {{'Order.payment_method'|translate}}
+                </h4>
+                <p class="mt-3">{{orderDetail.paymentType}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- order_summary -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="flex-1 border p-4 delivery_info">
+                <h4 class="font-medium">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span class="mx-1"></span>
+
+                    {{'Order.Order_summary'|translate}}
+
+
+                </h4>
+                <div class="row mt-4 summary_t">
+                    <div class="col-12">
+                        <div class="mb-2 font-medium d-flex align-items-center gap-3"><span>
+                            {{'Order.TotalBeforeTax'|translate}}
+
+                            </span> <strong>
+
+                            {{+orderDetail.subtotal.toFixed(2)|customCurrency:currentCurrency}}
+
+                        </strong> </div>
+                        <!-- <div class="mb-2 font-medium d-flex align-items-center gap-3"> <span>Shipping fees :
+
+                        </span> <strong>$123.43</strong></div> -->
+                        <!-- <div class="mb-2 font-medium d-flex align-items-center gap-3">
+                            <span>Cash on delivery fees :</span> <strong>$123.43</strong></div> -->
+                    </div>
+                </div>
+                <div class="row border-top pt-3 mt-3 total align-items-center">
+                    <div class="col-12 col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="mb-2">
+                            {{'Order.TotalAfter'|translate}}
+
+                           </div>
+                    </div>
+                    <div class="col-12 col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                        <div class="d-flex align-items-center justify-content-between mob_t">
+                            <div class="mb-2">{{+orderDetail.total.toFixed(2)|customCurrency:currentCurrency}}</div>
+                            <div>
+                                <button title="btn"  class="save_btn in_btn" type="text">
+                                    <i class="fa-regular fa-file-lines"></i>
+                                    <span class="mx-1"></span>
+                                    <span>
+
+                                        {{'Order.Invoice'|translate}}
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

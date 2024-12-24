@@ -1,0 +1,211 @@
+<form class="row add_address_form" [formGroup]="addressForm">
+    <div class="form-group select-box col-12 col-md-12 col-sm-12 col-lg-6">
+        <label>{{ "FullName" | translate }}</label>
+        <div class="position-relative">
+            <input formControlName="fullname" [ngClass]="{
+                    'is-invalid':
+                        (submitted && addressFormControls.fullname.errors) ||
+                        (addressFormControls.fullname.touched &&
+                            addressFormControls.fullname.invalid),
+                    'is-valid': addressFormControls.fullname.valid
+                }" type="text" title="control" class="form-control" autofocus />
+            <div class="input_icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+        <div *ngIf="
+                (submitted && addressFormControls.fullname.errors) ||
+                (addressFormControls.fullname.touched &&
+                    addressFormControls.fullname.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.fullname.errors?.required">
+                {{ "fullname_Required" | translate }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group position-relative select-box col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+        <label>{{ "Country" | translate }}:</label>
+        <select class="form-control" formControlName="countryId" [ngClass]="{
+                'is-invalid':
+                    (submitted && addressFormControls.countryId.errors) ||
+                    (addressFormControls.countryId.touched &&
+                        addressFormControls.countryId.invalid),
+                'is-valid': addressFormControls.countryId.valid
+            }" (change)="getCitiesByCountryId(); onSelectCountryCode()">
+            <option value="" disabled>{{ "Country" | translate }}</option>
+            <option *ngFor="let country of countries" [value]="country.id">
+                {{ country.name }}
+            </option>
+        </select>
+        <div *ngIf="
+                (submitted && addressFormControls.countryId.errors) ||
+                (addressFormControls.countryId.touched &&
+                    addressFormControls.countryId.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.countryId.errors?.required">
+                {{ "country_Required" | translate }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+        <label>{{ "City" | translate }}:</label>
+        <select class="form-control" formControlName="cityId" [ngClass]="{
+                'is-invalid':
+                    (submitted && addressFormControls.cityId.errors) ||
+                    (addressFormControls.cityId.touched &&
+                        addressFormControls.cityId.invalid),
+                'is-valid': addressFormControls.cityId.valid
+            }">
+            <option value="" disabled>{{ "City" | translate }}</option>
+            <option *ngFor="let city of cities" [value]="city.id">
+                {{ city.name }}
+            </option>
+        </select>
+
+        <div *ngIf="
+                (submitted && addressFormControls.cityId.errors) ||
+                (addressFormControls.cityId.touched &&
+                    addressFormControls.cityId.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.cityId.errors?.required">
+                {{ "city_Required" | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+        <label>{{ "PhoneNumber" | translate }}</label>
+        <div class="position-relative">
+            <input [ngClass]="{
+                    'is-invalid':
+                        (submitted && addressFormControls.phoneNumber.errors) ||
+                        (addressFormControls.phoneNumber.touched &&
+                            addressFormControls.phoneNumber.invalid),
+                    'is-valid': addressFormControls.phoneNumber.valid
+                }" formControlName="phoneNumber" type="tel" title="control" class="form-control" autofocus />
+            <div class="input_icon">
+                <span>
+                    {{ countryPhoneCode }}
+                </span>
+            </div>
+        </div>
+
+        <div *ngIf="
+                (submitted && addressFormControls.phoneNumber.errors) ||
+                (addressFormControls.phoneNumber.touched &&
+                    addressFormControls.phoneNumber.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.phoneNumber.errors?.required">
+                {{ "phoneNumber_Required" | translate }}
+            </div>
+
+            <div *ngIf="
+                    addressFormControls.phoneNumber.errors?.maxlength ||
+                    addressFormControls.phoneNumber.errors?.minlength
+                ">
+                {{
+                "MESSAGES.PHONE_NUMBER_LEAST"
+                | translate
+                : {
+                number: addressFormControls.phoneNumber.errors
+                ?.maxlength?.requiredLength
+                ? addressFormControls.phoneNumber.errors
+                ?.maxlength.requiredLength
+                : addressFormControls.phoneNumber.errors
+                ?.minlength?.requiredLength
+                }
+                }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+        <label>{{ "Street" | translate }}</label>
+        <div class="position-relative">
+            <input type="text" [ngClass]="{
+                    'is-invalid':
+                        (submitted &&
+                            addressFormControls.streetAddress.errors) ||
+                        (addressFormControls.streetAddress.touched &&
+                            addressFormControls.streetAddress.invalid),
+                    'is-valid': addressFormControls.streetAddress.valid
+                }" formControlName="streetAddress" title="control" class="form-control" autofocus />
+            <div class="input_icon">
+                <i class="fa-solid fa-road"></i>
+            </div>
+        </div>
+        <div *ngIf="
+                (submitted && addressFormControls.streetAddress.errors) ||
+                (addressFormControls.streetAddress.touched &&
+                    addressFormControls.streetAddress.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.streetAddress.errors?.required">
+                {{ "streetAddress_Required" | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+        <label>{{ "BuildingNumber" | translate }}</label>
+        <div class="position-relative">
+            <input type="number" formControlName="buildingNumber" [ngClass]="{
+                    'is-invalid':
+                        (submitted &&
+                            addressFormControls.buildingNumber.errors) ||
+                        (addressFormControls.buildingNumber.touched &&
+                            addressFormControls.buildingNumber.invalid),
+                    'is-valid': addressFormControls.buildingNumber.valid
+                }" title="control" class="form-control" autofocus />
+            <div class="input_icon">
+                <i class="fa-solid fa-archway"></i>
+            </div>
+        </div>
+        <div *ngIf="
+                (submitted && addressFormControls.buildingNumber.errors) ||
+                (addressFormControls.buildingNumber.touched &&
+                    addressFormControls.buildingNumber.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.buildingNumber.errors?.required">
+                {{ "buildingNumber_Required" | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+        <label>{{ "State" | translate }}</label>
+        <div class="position-relative">
+            <input type="text" [ngClass]="{
+                    'is-invalid':
+                        (submitted && addressFormControls.state.errors) ||
+                        (addressFormControls.state.touched &&
+                            addressFormControls.state.invalid),
+                    'is-valid': addressFormControls.state.valid
+                }" formControlName="state" title="control" class="form-control" autofocus />
+            <div class="input_icon">
+                <i class="fa-solid fa-city"></i>
+            </div>
+        </div>
+        <div *ngIf="
+                (submitted && addressFormControls.state.errors) ||
+                (addressFormControls.state.touched &&
+                    addressFormControls.state.invalid)
+            " class="invalid-feedback">
+            <div *ngIf="addressFormControls.state.errors?.required">
+                {{ "state_Required" | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="defualt-address-wrap">
+        <div class="form-check">
+            <input class="form-check-input" formControlName="defaultAddress" type="checkbox" id="defualt-address" />
+            <label class="form-check-label" for="defualt-address">
+                {{ "DefaultAddress" | translate }}
+            </label>
+        </div>
+    </div>
+    <button title="add address" (click)="addressData.id ? editAddress() : addAddress()" [disabled]="loading"
+        class="save_btn">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>{{ "Save" | translate }}
+    </button>
+</form>

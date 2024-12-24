@@ -1,0 +1,52 @@
+<div class="categories-shop-area pt-5 pb-5" *ngIf="(brandsData?.length || categoriesData?.length) && !loading">
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>{{ componentData.title }}</h2>
+        </div>
+        <div class="categories-shop-slides">
+            <owl-carousel-o [options]="owlOptions">
+                <ng-container *ngIf="brandsData?.length;then brandsContent;else categoriesContent "></ng-container>
+                <ng-template #brandsContent>
+                    <ng-template carouselSlide *ngFor="let brand of brandsData">
+                        <div class="categories-shop-card">
+                            <div class="categories-image">
+                                <a (click)="routingService.route('products' , { brandIds:brand.brandId })" >
+                                    <img (error)="imagesFallbackService.handleBrandFallback($event)"
+                                        [src]="brand.imgBrand ? (imgBaseUrl + brand.imgBrand) : imagesFallbackService.handleBrandFallback()"
+                                        class="rounded-circle brand-img" alt="image">
+                                </a>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a (click)="routingService.route('products' , { brandIds:brand.brandId })">{{brand.brandName}}</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+                <ng-template #categoriesContent>
+                    <ng-template carouselSlide *ngFor="let category of categoriesData">
+                        <div class="categories-shop-card">
+                            <div class="categories-image">
+                                <a (click)="routingService.route('products' , { categoryId:category.categoryId })">
+                                    <img (error)="imagesFallbackService.handleCategoryFallback($event)"
+                                    [src]="category?.logo ? (imgBaseUrl + category?.logo) : imagesFallbackService.handleCategoryFallback()"
+                                     class="rounded-circle"
+                                        alt="image">
+                                </a>
+                            </div>
+                            <div class="categories-content">
+                                <h3>
+                                    <a (click)="routingService.route('products' , { categoryId:category.categoryId })">{{category.categoryName}}</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

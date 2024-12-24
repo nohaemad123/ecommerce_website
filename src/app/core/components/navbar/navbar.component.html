@@ -1,0 +1,504 @@
+<!-- Navbar -->
+<div class="navbar-area" [ngClass]="{ 'bg-f9f9f9': router.url === '/' }" *ngIf="storeSettings">
+    <div class="container-fluid">
+        <div class="navbar navbar-m">
+            <div class="d-flex align-items-center justify-content-between w-100 py-2 header-sticky">
+                <div class="d-flex align-items-center gap-4">
+                    <div class="logo logo_d">
+                        <a class="navbar-brand" [routerLink]="routingService.navigate('home')"><img class="logo-img" [src]="
+                                    storeSettings.logo
+                                        ? imgBaseUrl + storeSettings.logo
+                                        : imagesFallbackService.handleLogoFallback()
+                                " (error)="
+                                    imagesFallbackService.handleLogoFallback(
+                                        $event
+                                    )
+                                " width="150px" height="100px" alt="logo" /></a>
+                    </div>
+                    <div>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light align-items-start navbar-custom"
+                            [class.active]="classApplied">
+                            <button class="navbar-toggler" title="menu" type="button" (click)="toggleClass()">
+                                <span class="burger-menu">
+                                    <span class="top-bar"></span>
+                                    <span class="middle-bar"></span>
+                                    <span class="bottom-bar"></span>
+                                </span>
+                            </button>
+                            <div class="collapse navbar-collapse navbar-collapse_custom align-items-end flex-column-reverse"
+                                id="navbarSupportedContent">
+                                <ul class="navbar-nav" [ngClass]="{
+                                        'for-responsive': isResponsive
+                                    }">
+                                    <li class="nav-item megamenu">
+                                        <div class="d-flex align-items-center justify-content-between reverse-m">
+                                            <a href="javascript:void(0)"
+                                                class="dropdown-toggle nav-link text-uppercase categories-m">
+                                                <i class="fa-solid fa-shop"></i>
+                                                {{
+                                                "NavBar.Categories"
+                                                | translate
+                                                }}
+                                            </a>
+                                            <span (click)="toggleClass()" class="close-menu">
+                                                {{ "NavBar.Close" | translate }}
+                                            </span>
+                                        </div>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h6 class="submenu-title">
+                                                            {{
+                                                            "NavBar.SHOP"
+                                                            | translate
+                                                            }}
+                                                        </h6>
+                                                        <ul class="megamenu-submenu">
+                                                            <li *ngFor="
+                                                                    let category of categories
+                                                                ">
+                                                                <a (click)="
+                                                                        onCategoryClicked(
+                                                                            category.id
+                                                                        )
+                                                                    " routerLinkActive="active"
+                                                                    [routerLinkActiveOptions]="{
+                                                                        exact: true
+                                                                    }">{{
+                                                                    category.name
+                                                                    }}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item nav_item_m" *ngFor="let link of storeLinks">
+                                        <a *ngIf="link.showInNavigation" (click)="openRoute(link.nameURL)"
+                                            href="javascript:void(0)" class="nav-link">{{ link?.title | uppercase }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="others-option d-flex align-items-center">
+                    <div class="option-item option-item_s position-relative" *ngIf="isSearchOpen">
+                        <div class="search-box">
+                            <input title="search" type="text" class="input-search" [formControl]="searchControl"
+                                [placeholder]="
+                                    'NavBar.Search_products' | translate
+                                " />
+                            <button title="btn" type="submit" class="border-start ps-3">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <!-- search-result -->
+                        <div class="search_result" *ngIf="searchStarted">
+                            <ng-container *ngIf="searchResults?.length">
+                                <div class="item d-flex align-items-start gap-3" *ngFor="let product of searchResults"
+                                    (click)="openProductPage(product.id)">
+                                    <div class="mt-2">
+                                        <img [src]="
+                                                product?.productImages?.length
+                                                    ? imgBaseUrl +
+                                                      product.productImages[0]
+                                                          .imageProduct
+                                                    : 'assets/img/noproduct.png'
+                                            " width="50" (error)="
+                                                imagesFallbackService.handleProductFallback(
+                                                    $event
+                                                )
+                                            " alt="product-thumbnail" />
+                                    </div>
+                                    <div class="flex-fill">
+                                        <div class="d-flex align-items-center justify-content-between mb-1">
+                                            <h3 class="product-name">
+                                                {{
+                                                (selectedLang === "en"
+                                                ? product.productName
+                                                : product.productName
+                                                ) | slice : 0 : 30
+                                                }}
+                                            </h3>
+                                            <!-- <span>
+                                                <span class="new-price"> {{ (product.priceAfterDiscount ?
+                                                    product.priceAfterDiscount.toFixed(2) :
+                                                    product.priceProduct.toFixed(2) )|customCurrency:currency}}</span>
+                                                <span class="old-price"
+                                                    *ngIf="product.priceAfterDiscount">{{product.priceProduct.toFixed(2)|customCurrency:currency}}</span>
+                                            </span> -->
+                                        </div>
+                                        <p>
+                                            <span class="new-price">
+                                                {{
+                                                (product.priceAfterDiscount
+                                                ? +product.priceAfterDiscount.toFixed(
+                                                2
+                                                )
+                                                : +product.productPrice.toFixed(
+                                                2
+                                                )
+                                                )
+                                                | customCurrency
+                                                : currency
+                                                }}</span>
+                                            <span class="old-price" *ngIf="
+                                                    product.priceAfterDiscount
+                                                ">{{
+                                                +product.productPrice.toFixed(
+                                                2
+                                                )
+                                                | customCurrency
+                                                : currency
+                                                }}</span>
+                                        </p>
+                                        <!-- <p>{{ (selectedLang === 'en' ? product.productShortDescriptionEn :
+                                            product.productShortDescription) | slice:0:100}}</p> -->
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <!-- placeholder -->
+                            <div class="p-4" *ngIf="!searchResults?.length">
+                                <div class="mt-2 text-center">
+                                    <img src="../../../../assets/img/error.png" width="150" class="m-auto" alt="" />
+                                    <p class="mt-3">
+                                        {{ "NavBar.nodataFound" | translate }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <p class="mt-3">{{'NavBar.nodataFound'|translate}}</p> -->
+
+                    <div class="top-header-info d-flex align-items-center">
+                        <div class="logo logo_m">
+                            <a class="navbar-brand" [routerLink]="routingService.navigate('home')"><img [src]="
+                                        storeSettings.logo
+                                            ? imgBaseUrl + storeSettings.logo
+                                            : 'assets/img/logo.png'
+                                    " alt="logo" /></a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="option-item switch_search_mobile">
+                                <a (click)="openSearch()" class="cart-btn cursor-pointer">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                            <div class="option-item account_m" (click)="onUserIconClicked()">
+                                <a class="user-account"><i class="far fa-user"></i></a>
+                                <div class="subMenu_account" *ngIf="isAccountMenu">
+                                    <!-- info -->
+                                    <div class="d-flex align-items-center justify-content-between border-bottom px-4 py-3 info"
+                                        [routerLink]="routingService.navigate('profile/settings/info')">
+                                        <div>
+                                            <h2>{{ currentUser.name }}</h2>
+                                            <span>{{ currentUser.email }}</span>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-angles-right"></i>
+                                        </div>
+                                    </div>
+                                    <!-- items -->
+                                    <div
+                                        class="items d-flex align-items-center justify-content-between border-bottom gap-3 px-4 py-4">
+                                        <div class="item" [class.active]="
+                                                selectedLink === 'settings/info'
+                                            ">
+                                            <div (click)="
+                                                    openProfileLink(
+                                                        'settings/info'
+                                                    )
+                                                ">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-user-shield"></i>
+                                                </div>
+                                                <span>{{
+                                                    "NavBar.MyAccount"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="item" [class.active]="
+                                                selectedLink === 'address'
+                                            ">
+                                            <div (click)="
+                                                    openProfileLink('address')
+                                                ">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-location-dot"></i>
+                                                </div>
+                                                <span>{{
+                                                    "NavBar.MyAddresses"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="item" [class.active]="
+                                                selectedLink === 'orders'
+                                            ">
+                                            <div (click)="
+                                                    openProfileLink('orders')
+                                                ">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </div>
+                                                <span>{{
+                                                    "NavBar.MyOrders"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="item" [class.active]="
+                                                selectedLink === 'wishlist'
+                                            ">
+                                            <div (click)="
+                                                    openProfileLink('wishlist')
+                                                ">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </div>
+                                                <span>{{
+                                                    "NavBar.Wishlist"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- logOut -->
+                                    <div class="logOut" (click)="onLogout()">
+                                        <div class="d-flex align-items-center justify-content-center py-4 gap-3">
+                                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            <span>{{
+                                                "NavBar.Logout" | translate
+                                                }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-item cart_m">
+                                <a (click)="openCartModel()" class="cart-btn cursor-pointer">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span *ngIf="cartProducts?.length">{{
+                                        cartProducts.length
+                                        }}</span>
+                                </a>
+                            </div>
+                            <div class="language-switcher">
+                                <img [src]="
+                                        'assets/img/' + selectedLang + '.svg'
+                                    " (click)="
+                                        selectedLang == 'en'
+                                            ? setLanguage('ar')
+                                            : setLanguage('en')
+                                    " width="25px" alt="" />
+                            </div>
+                            <div class="currency-switcher">
+                                <div class="currency_head">
+                                    <div class="d-flex align-items-center justify-content-center gap-2 t-c"
+                                        (click)="openCurrencyMenu()">
+                                        <span *ngIf="currency === 'SAR'">{{
+                                            "NavBar.Currency.SAR" | translate
+                                            }}</span>
+                                        <span *ngIf="currency === 'EGP'">{{
+                                            "NavBar.Currency.EGP" | translate
+                                            }}</span>
+                                        <span *ngIf="currency === 'USD'">{{
+                                            "NavBar.Currency.USD" | translate
+                                            }}</span>
+                                    </div>
+                                    <div class="subMenu_currency p-3" *ngIf="showCurrencyMenu">
+                                        <!-- <span class="c">Currency</span> -->
+                                        <div class="">
+                                            <div (click)="
+                                                    onSelectCurrency('SAR')
+                                                " class="border-bottom py-3 item d-flex gap-2"
+                                                *ngIf="currency != 'SAR'">
+                                                <img src="../../../../assets/img/ar.webp" width="30" alt="" />
+                                                <span>
+                                                    {{
+                                                    "NavBar.Currency.SAR"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                            <div (click)="
+                                                    onSelectCurrency('EGP')
+                                                " class="border-bottom py-3 item d-flex gap-2"
+                                                *ngIf="currency != 'EGP'">
+                                                <img src="../../../../assets/img/egp.png" class="egp" width="30"
+                                                    alt="" />
+                                                <span>{{
+                                                    "NavBar.Currency.EGP"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                            <div (click)="
+                                                    onSelectCurrency('USD')
+                                                " class="py-3 item d-flex gap-2" *ngIf="currency != 'USD'">
+                                                <img src="../../../../assets/img/en.webp" width="30" alt="" />
+                                                <span>{{
+                                                    "NavBar.Currency.USD"
+                                                    | translate
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- cart-model -->
+<div class="sideCart" [@slideInOut]="stateName">
+    <header class="d-flex align-items-center justify-content-between border-bottom">
+        <h5 class="mb-0" *ngIf="cartProducts?.length">
+            {{ "NavBar.Products" | translate }}({{ cartProducts.length }})
+        </h5>
+        <span (click)="openCartModel()">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+    </header>
+    <main [ngClass]="
+            !cartProducts?.length
+                ? 'vh-100 d-flex align-items-center justify-content-center'
+                : ''
+        ">
+        <div class="empty-cart" *ngIf="!cartProducts?.length; else cartForm">
+            <p>{{ "NavBar.empty_cart" | translate }}</p>
+            <a [routerLink]="routingService.navigate('home')" (click)="openCartModel()" class="default-btn">
+                {{ "NavBar.return_shop" | translate }}</a>
+        </div>
+        <ng-template #cartForm>
+            <form class="mt-4 mx-3">
+                <div class="cart-table table-responsive">
+                    <!-- new-cart -->
+                    <ng-container *ngFor="let product of cartProducts">
+                        <div [attr.id]="'#product' + product.id"
+                            class="d-flex align-items-start justify-content-between gap-3 border-bottom pb-3 mb-3">
+                            <!-- img -->
+                            <div>
+                                <a [routerLink]="routingService.navigate('product-details/' + product.productId)"
+                                    class="border d-block">
+                                    <img [src]="
+                                            product.image
+                                                ? imgBaseUrl + product.image
+                                                : imagesFallbackService.handleProductFallback()
+                                        " (error)="
+                                            imagesFallbackService.handleProductFallback(
+                                                $event
+                                            )
+                                        " alt="item" width="75" class="d-block" />
+                                </a>
+                            </div>
+                            <!-- content -->
+                            <div class="flex-1">
+                                <div class="d-flex align-items-start justify-content-between gap-3">
+                                    <div>
+                                        <!-- <span>small text</span> -->
+                                        <h6 class="mb-0">
+                                            {{ product.productName }}
+                                        </h6>
+                                    </div>
+                                    <div>
+                                        <button title="remove" (click)="
+                                                currentUser.token
+                                                    ? removeFromCartUser(
+                                                          product
+                                                      )
+                                                    : removeFromCartGuest(
+                                                          product
+                                                      )
+                                            " class="remove">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-2">
+                                    <div>
+                                        <span class="d-block text-decoration-line-through current-th">
+                                            {{
+                                            product.productPrice
+                                            | customCurrency : currency
+                                            }}
+                                        </span>
+                                        <span class="d-block current-p font-medium">{{
+                                            product.quantity *
+                                            +product.productPrice.toFixed(
+                                            2
+                                            )
+                                            | customCurrency : currency
+                                            }}</span>
+                                    </div>
+                                    <div class="product-quantity">
+                                        <div class="input-counter">
+                                            <span class="minus-btn" (click)="minus(product)"><i
+                                                    class="fas fa-minus"></i></span>
+                                            <input class="mx-3 text-center" title="count" type="text"
+                                                [value]="product.quantity" name="count" />
+                                            <span class="plus-btn" (click)="plus(product)"><i
+                                                    class="fas fa-plus"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="cart-buttons" *ngIf="cartProducts?.length">
+                        <div class="cart-totals">
+                            <strong class="d-block mb-1">
+                                {{ "NavBar.Total" | translate }}
+                                <span>
+                                    {{ totalPrice | customCurrency : currency }}
+                                </span></strong>
+                            <a (click)="goToCartDetails()" class="default-btn">
+                                {{ "NavBar.complete_order" | translate }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+    </main>
+</div>
+<div *ngIf="isCart" class="overlay"></div>
+
+<!-- fixed-header-footer-mobile -->
+<footer class="fiex-footer">
+    <div class="d-flex px-4 align-items-center justify-content-between h-100">
+        <a (click)="onUserIconClickedMobile()" class="d-flex flex-column align-items-center justify-content-center"
+            title="">
+            <i class="fa-regular fa-user d-block"></i>
+            <strong class="mt-1">{{ "NavBar.Account" | translate }}</strong>
+        </a>
+        <a [routerLink]="routingService.navigate('cart')" class="d-flex flex-column align-items-center justify-content-center" title="">
+            <div class="cart_f_m">
+                <i class="fa-brands fa-opencart d-block"></i>
+                <span *ngIf="cartProducts?.length">{{
+                    cartProducts.length
+                    }}</span>
+            </div>
+            <strong class="mt-1">{{ "NavBar.Cart" | translate }}</strong>
+        </a>
+        <a (click)="modalOpenForm(modalCategories)" class="d-flex flex-column align-items-center justify-content-center"
+            title="">
+            <i class="fa fa-shop d-block"></i>
+            <strong class="mt-1">{{ "NavBar.Categories" | translate }}</strong>
+        </a>
+        <a  [routerLink]="routingService.navigate('home')" class="d-flex flex-column align-items-center justify-content-center" title="">
+            <i class="fa-solid fa-igloo d-block"></i>
+            <strong class="mt-1">{{ "NavBar.Home" | translate }}</strong>
+        </a>
+    </div>
+</footer>
+
+<ng-template #modalCategories let-modal>
+    <app-category-modal [categories]="categories"></app-category-modal>
+</ng-template>

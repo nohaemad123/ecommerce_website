@@ -1,0 +1,467 @@
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>{{ "productDetail.title" | translate }}</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li>
+                        <a [routerLink]="routingService.navigate('home')">{{
+                            "productDetail.home" | translate
+                        }}</a>
+                    </li>
+                    <li>{{ "productDetail.title" | translate }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products Details -->
+<div class="products-details-area ptb-100" *ngIf="product?.id && !loading">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-lg-5 col-md-12">
+                <div class="products-details-image">
+                    <div class="mb-3 big-img">
+                        <lib-ngx-image-zoom
+                            [magnification]="1"
+                            [enableScrollZoom]="true"
+                            [lensWidth]="200"
+                            [lensHeight]="200"
+                            [enableLens]="true"
+                            [thumbImage]="
+                                imgBaseUrl + productMainImg.imageProductUrl
+                            "
+                            [fullImage]="
+                                imgBaseUrl + productMainImg.imageProductUrl
+                            "
+                            (error)="
+                                imagesFallbackService.handleProductFallback(
+                                    $event
+                                )
+                            "
+                        ></lib-ngx-image-zoom>
+                    </div>
+
+                    <owl-carousel-o [options]="customThumbsOptions">
+                        <ng-container
+                            *ngFor="let slide of product?.productImages"
+                        >
+                            <!-- <ng-template class="slide" carouselSlide [id]="slide.id"> -->
+                            <ng-template class="slide" carouselSlide>
+                                <div (click)="getData(slide)" class="slide_p">
+                                    <img
+                                        [src]="
+                                            slide.imageProduct
+                                                ? imgBaseUrl +
+                                                  slide?.imageProduct
+                                                : imagesFallbackService.handleProductFallback()
+                                        "
+                                        (error)="
+                                            imagesFallbackService.handleProductFallback(
+                                                $event
+                                            )
+                                        "
+                                        class="border img-thumb"
+                                        alt=""
+                                    />
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </owl-carousel-o>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12" *ngIf="product">
+                <div class="products-details-desc">
+                    <h3>
+                        {{ product.productName }}
+                    </h3>
+                    <div class="price">
+                        <span class="new-price">
+                            {{
+                                +product.productPrice.toFixed(2)
+                                    | customCurrency : currentCurrency
+                            }}
+                        </span>
+                    </div>
+                    <div class="products-review" *ngIf="product?.rate > 0">
+                        <div class="rating">
+                            <div class="review-stars">
+                                <i
+                                    class="fas fa-star"
+                                    [ngClass]="{
+                                        checked:
+                                            product.rate == 1 ||
+                                            product.rate > 1
+                                    }"
+                                ></i>
+                                <i
+                                    class="fas fa-star"
+                                    [ngClass]="{
+                                        checked:
+                                            product.rate == 2 ||
+                                            product.rate > 2
+                                    }"
+                                ></i>
+
+                                <i
+                                    class="fas fa-star"
+                                    [ngClass]="{
+                                        checked:
+                                            product.rate == 3 ||
+                                            product.rate > 3
+                                    }"
+                                ></i>
+
+                                <i
+                                    class="fas fa-star"
+                                    [ngClass]="{
+                                        checked:
+                                            product.rate == 4 ||
+                                            product.rate > 4
+                                    }"
+                                ></i>
+                                <i
+                                    class="fas fa-star"
+                                    [ngClass]="{
+                                        checked: product.rate == 5
+                                    }"
+                                ></i>
+                            </div>
+                        </div>
+                        <a href="javascript:;" class="rating-count"
+                            >{{ product.rate }}
+                            {{ "productDetail.reviews" | translate }}</a
+                        >
+                    </div>
+                    <p
+                        class="text-s"
+                        [innerHTML]="product.productShortDescription"
+                    ></p>
+
+                    <div class="products-add-to-cart">
+                        <div class="d-flex align-items-center">
+                            <div class="input-counter">
+                                <span class="minus-btn" (click)="minus()"
+                                    ><i class="fas fa-minus"></i
+                                ></span>
+                                <input
+                                    type="text"
+                                    [(ngModel)]="product.quantity"
+                                />
+                                <span class="plus-btn" (click)="plus()"
+                                    ><i class="fas fa-plus"></i
+                                ></span>
+                            </div>
+                            <button
+                                class="default-btn"
+                                (click)="
+                                    currentUser.token
+                                        ? addToCartUser(product)
+                                        : addToCartGuest(product)
+                                "
+                            >
+                                <i class="fas fa-shopping-bag"></i>
+                                {{ "productDetail.ADDTOCART" | translate }}
+                            </button>
+                        </div>
+                    </div>
+                    <a
+                        href="javascript:;"
+                        (click)="onToggleFavorite()"
+                        class="add-to-wishlist-btn"
+                        ><i
+                            class="fas fa-plus"
+                            *ngIf="!product.isInFavorite"
+                        ></i>
+                        <i
+                            class="fas fa-minus"
+                            *ngIf="product.isInFavorite"
+                        ></i>
+                        {{ "productDetail.ADDTOWISHLIST" | translate }}
+                    </a>
+                    <div class="products-share">
+                        <ul class="social">
+                            <li>
+                                <span>
+                                    {{ "productDetail.Share" | translate }}
+                                </span>
+                            </li>
+                            <li>
+                                <a
+                                    [href]="
+                                        'https://www.facebook.com/sharer/sharer.php?u=' +
+                                        currentUrl
+                                    "
+                                    class="facebook"
+                                    target="_blank"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    [href]="
+                                        'https://twitter.com/intent/tweet?url=' +
+                                        currentUrl
+                                    "
+                                    class="twitter"
+                                    target="_blank"
+                                    ><i class="fab fa-twitter"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a
+                                    [href]="
+                                        'https://www.linkedin.com/shareArticle?mini=true&url=' +
+                                        currentUrl
+                                    "
+                                    class="linkedin"
+                                    target="_blank"
+                                    ><i class="fab fa-linkedin-in"></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 mb-5">
+                <div class="products-details-tabs">
+                    <ngx-tabset>
+                        <ngx-tab
+                            [tabTitle]="'productDetail.Description' | translate"
+                            class="text-s"
+                            *ngIf="product?.description?.length"
+                        >
+                            <p [innerHTML]="product.description"></p>
+                        </ngx-tab>
+                        <ngx-tab
+                            [tabTitle]="
+                                'productDetail.Additionalinformation'
+                                    | translate
+                            "
+                            *ngIf="product?.additionalInformation?.length"
+                        >
+                            <div class="table-responsive">
+                                <table class="table table-striped additional_c">
+                                    <tbody>
+                                        <tr
+                                            *ngFor="
+                                                let infoItem of product?.additionalInformation
+                                            "
+                                        >
+                                            <td>
+                                                {{ infoItem?.propertyName }}
+                                            </td>
+                                            <td>
+                                                {{ infoItem?.propertyValue }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ngx-tab>
+
+                        <ngx-tab
+                            [tabTitle]="'productDetail.reviews' | translate"
+                            (click)="onReviewsTabClicked()"
+                        >
+                            <div class="products-review-comments">
+                                <div
+                                    class="products-review-comments"
+                                    *ngIf="reviews.length && getReviewsLoading"
+                                >
+                                    <div
+                                        class="user-review d-flex align-items-center gap-4"
+                                        *ngFor="let review of reviews"
+                                    >
+                                        <div>
+                                            <div class="review-rating">
+                                                <div class="review-stars">
+                                                    <i
+                                                        class="fas fa-star"
+                                                        [ngClass]="{
+                                                            checked:
+                                                                review.rate ==
+                                                                    1 ||
+                                                                review.rate > 1
+                                                        }"
+                                                    ></i>
+                                                    <i
+                                                        class="fas fa-star"
+                                                        [ngClass]="{
+                                                            checked:
+                                                                review.rate ==
+                                                                    2 ||
+                                                                review.rate > 2
+                                                        }"
+                                                    ></i>
+
+                                                    <i
+                                                        class="fas fa-star"
+                                                        [ngClass]="{
+                                                            checked:
+                                                                review.rate ==
+                                                                    3 ||
+                                                                review.rate > 3
+                                                        }"
+                                                    ></i>
+
+                                                    <i
+                                                        class="fas fa-star"
+                                                        [ngClass]="{
+                                                            checked:
+                                                                review.rate ==
+                                                                    4 ||
+                                                                review.rate > 4
+                                                        }"
+                                                    ></i>
+                                                    <i
+                                                        class="fas fa-star"
+                                                        [ngClass]="{
+                                                            checked:
+                                                                review.rate == 5
+                                                        }"
+                                                    ></i>
+                                                </div>
+                                            </div>
+                                            <span class="d-block sub-name">{{
+                                                review.name
+                                            }}</span>
+                                            <p *ngIf="review.comments">
+                                                {{ review.comments }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="products-review-comments text-center"
+                                    *ngIf="
+                                        !reviews?.length && getReviewsLoading
+                                    "
+                                >
+                                    <p>
+                                        {{
+                                            "productDetail.no_reviews_product"
+                                                | translate
+                                        }}
+                                    </p>
+                                </div>
+
+                                <div class="review-form-wrapper">
+                                    <h3>
+                                        {{
+                                            "productDetail.add_review"
+                                                | translate
+                                        }}
+                                    </h3>
+
+                                    <form
+                                        [formGroup]="reviewForm"
+                                        (ngSubmit)="onAddReview()"
+                                    >
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="rating">
+                                                    <input
+                                                        type="radio"
+                                                        id="star5"
+                                                        formControlName="rate"
+                                                        name="rate"
+                                                        value="5"
+                                                    /><label
+                                                        for="star5"
+                                                    ></label>
+                                                    <input
+                                                        type="radio"
+                                                        id="star4"
+                                                        name="rate"
+                                                        formControlName="rate"
+                                                        value="4"
+                                                    /><label
+                                                        for="star4"
+                                                    ></label>
+                                                    <input
+                                                        type="radio"
+                                                        id="star3"
+                                                        name="rate"
+                                                        formControlName="rate"
+                                                        value="3"
+                                                    /><label
+                                                        for="star3"
+                                                    ></label>
+                                                    <input
+                                                        type="radio"
+                                                        id="star2"
+                                                        name="rate"
+                                                        formControlName="rate"
+                                                        value="2"
+                                                    /><label
+                                                        for="star2"
+                                                    ></label>
+                                                    <input
+                                                        type="radio"
+                                                        id="star1"
+                                                        name="rate"
+                                                        formControlName="rate"
+                                                        value="1"
+                                                    /><label
+                                                        for="star1"
+                                                    ></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <textarea
+                                                        formControlName="comments"
+                                                        [placeholder]="
+                                                            'productDetail.Your_review'
+                                                                | translate
+                                                        "
+                                                        class="form-control"
+                                                        cols="30"
+                                                        rows="6"
+                                                    ></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12">
+                                                <button
+                                                    type="submit"
+                                                    [disabled]="
+                                                        addReviewLoading
+                                                    "
+                                                >
+                                                    <span
+                                                        *ngIf="addReviewLoading"
+                                                        class="spinner-border spinner-border-sm mr-1"
+                                                    ></span
+                                                    >{{
+                                                        "productDetail.SUBMIT"
+                                                            | translate
+                                                    }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </ngx-tab>
+                    </ngx-tabset>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 mt-5">
+                <app-related-products
+                    [productId]="productId"
+                ></app-related-products>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

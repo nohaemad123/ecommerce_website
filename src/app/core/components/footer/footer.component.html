@@ -1,0 +1,129 @@
+<footer class="footer-area" *ngIf="storeSettings">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-md-12">
+                <div class="single-footer-widget pr-5">
+                    <a [routerLink]="routingService.navigate('home')" class="logo">
+                        <img [src]="storeSettings.logo ? ( imgBaseUrl + storeSettings.logo ): imagesFallbackService.handleLogoFallback()"
+                        (error)="imagesFallbackService.handleLogoFallback($event)"
+                            width="150px" alt="logo" />
+                    </a>
+                    <p>
+                        {{'description'|translate}}
+                    </p>
+                    <ul class="social-links" *ngIf="socialMediaLinks">
+                        <li *ngIf="socialMediaLinks.facebookLink">
+                            <a [href]="socialMediaLinks.facebookLink" target="_blank"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li *ngIf="socialMediaLinks.instagramLink">
+                            <a [href]="socialMediaLinks.instagramLink" target="_blank"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                        <li *ngIf="socialMediaLinks.twitterLink">
+                            <a [href]="socialMediaLinks.twitterLink" target="_blank">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </li>
+
+                        <li *ngIf="socialMediaLinks.snapchatLink">
+                            <a [href]="socialMediaLinks.snapchatLink" target="_blank">
+                                <i class="fab fa-snapchat"></i>
+
+                            </a>
+                        </li>
+                        <li *ngIf="socialMediaLinks.tiktokLink">
+                            <a [href]="socialMediaLinks.tiktokLink" target="_blank">
+                                <i class="fab fa-tiktok"></i>
+
+                            </a>
+                        </li>
+
+                        <li *ngIf="socialMediaLinks?.linkedinLink">
+                            <a [href]="socialMediaLinks.linkedinLink" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+
+                            </a>
+                        </li>
+
+                        <li *ngIf="socialMediaLinks?.youtubeLink">
+                            <a [href]="socialMediaLinks.youtubeLink" target="_blank">
+                                <i class="fab fa-youtube"></i>
+
+                            </a>
+                        </li>
+                        <li *ngIf="socialMediaLinks.gmailLink">
+                            <a [href]="socialMediaLinks.gmailLink" target="_blank">
+                                <i class="fab fa-google"></i>
+
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <a href="#" target="_blank" class="location">Check our shop in Google Map</a> -->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+                <div class="single-footer-widget">
+                    <h3> {{'STORE'|translate}}</h3>
+                    <ul class="custom-links">
+                        <li *ngFor="let storeLink of storeLinks">
+                            <a
+                            *ngIf="storeLink.showInFooter"
+                            href="javascript:;" (click)="openRoute(storeLink.nameURL)">{{
+                                storeLink.title
+                                }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+                <div class="single-footer-widget">
+                    <h3>{{'LEGAL'|translate}}</h3>
+                    <ul class="custom-links">
+                        <li>
+                            <a href="javascript:;" [routerLink]="routingService.navigate('authentication')">{{
+                                "LOGIN" | translate
+                                }}</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" [routerLink]="routingService.navigate('authentication')">{{
+                                "REGISTER" | translate
+                                }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="single-footer-widget">
+                    <h3> {{'Help'|translate}}</h3>
+                    <ul class="custom-links">
+                        <li *ngIf="socialMediaLinks?.instagramLink"><a [href]="socialMediaLinks.instagramLink"
+                                target="_blank">{{'Instagram'|translate}}</a></li>
+                        <li *ngIf="socialMediaLinks?.snapchatLink"><a [href]="socialMediaLinks.snapchatLink"
+                                target="_blank">{{'Snapchat'|translate}}</a></li>
+                        <li *ngIf="socialMediaLinks?.facebookLink"><a [href]="socialMediaLinks.facebookLink"
+                                target="_blank">{{'Facebook'|translate}}</a></li>
+                    </ul>
+                    <div class="phone d-flex gap-2" *ngIf="storeSettings?.phone">
+                        <span>{{'Phone'|translate}}</span>
+                        <a href="{{'tel:'+storeSettings.phone}}">{{storeSettings.phone}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-7 col-sm-7">
+                    <p>
+                        {{'copyright'|translate}}
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-5 col-sm-5">
+                    <div class="payment-type">
+                        <img src="assets/img/payment.png" alt="payment-type" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

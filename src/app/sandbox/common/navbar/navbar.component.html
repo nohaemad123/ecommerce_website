@@ -1,0 +1,783 @@
+<!-- Top Header -->
+<!--<div class="top-header-area">
+     <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <p>Free Delivery Over $35 to Most of USA*</p>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="top-header-info">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <ul class="social-links">
+                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                        <div class="language-switcher">
+                            <select class="form-select">
+                                <option selected>English</option>
+                                <option>Spanish</option>
+                                <option>Chinese</option>
+                                <option>Russian</option>
+                                <option>Turkish</option>
+                            </select>
+                        </div>
+                        <div class="currency-switcher">
+                            <select class="form-select">
+                                <option selected>$USD</option>
+                                <option>€EUR</option>
+                                <option>$FJD</option>
+                                <option>£FKP</option>
+                                <option>£GBP</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
+<!-- Navbar -->
+<div class="navbar-area"
+    [ngClass]="{'bg-f9f9f9' : router.url === '/'}">
+    <div class="container-fluid">
+        <div class="navbar navbar-m">
+            <div class="d-flex align-items-center justify-content-between w-100 pt-4 header-sticky">
+                <div class="logo logo_d">
+                    <a class="navbar-brand" routerLink="/sandbox"><img src="assets/img/logo.png" alt="logo"></a>
+                </div>
+                <div class="others-option d-flex align-items-center">
+
+                    <div class="option-item option-item_s" *ngIf="isSearchOpen">
+                        <div class="search-box">
+                            <input type="text" class="input-search" placeholder="Search for products">
+                            <button type="submit" class="border-start ps-3"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="top-header-info d-flex align-items-center">
+                        <div class="logo logo_m">
+                            <a class="navbar-brand" routerLink="/"><img src="assets/img/logo.png" alt="logo"></a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="option-item switch_search_mobile">
+                                <a (click)="openSearch()" class="cart-btn cursor-pointer">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                            <div class="option-item account_m">
+                                <a routerLink="/sandbox/profile-authentication" class="user-account"><i
+                                        class="far fa-user"></i></a>
+                            </div>
+                            <div class="option-item cart_m">
+                                <a (click)="openCartModel()" class="cart-btn cursor-pointer">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>{{ cartProducts.length }}</span>
+                                </a>
+                            </div>
+                            <div class="language-switcher">
+                                <img src="../../../../assets/img/ar.svg" width="25px" alt="">
+                                <!-- <select class="form-select">
+            <option selected> </option>
+            <option>Spanish</option>
+            <option>Chinese</option>
+            <option>Russian</option>
+            <option>Turkish</option>
+        </select> -->
+                            </div>
+                            <div class="currency-switcher">
+                                <select class="form-select">
+                                    <option selected>$USD</option>
+                                    <option>€EUR</option>
+                                    <option>$FJD</option>
+                                    <option>£FKP</option>
+                                    <option>£GBP</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light align-items-start navbar-custom"
+            [class.active]="classApplied">
+            <button class="navbar-toggler" type="button" (click)="toggleClass()">
+                <span class="burger-menu">
+                    <span class="top-bar"></span>
+                    <span class="middle-bar"></span>
+                    <span class="bottom-bar"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse navbar-collapse_custom align-items-end flex-column-reverse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item megamenu"><a href="javascript:void(0)"
+                            class="dropdown-toggle nav-link text-uppercase categories-m"> <i
+                                class="fa-solid fa-shop"></i> Categories</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox/filter-page" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Full Width Style 01</a>
+                                            </li>
+                                            <li><a routerLink="/sandbox/filter-page" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Full Width Style 02</a>
+                                            </li>
+                                            <li><a routerLink="/sandbox/filter-page" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Left Sidebar Style
+                                                    01</a></li>
+                                            <li><a routerLink="/sandbox/filter-page" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Left Sidebar Style
+                                                    02</a></li>
+                                            <li><a routerLink="/sandbox/filter-page" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Right Sidebar Style
+                                                    01</a></li>
+                                            <li><a routerLink="/sandbox/filter-page" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Right Sidebar Style
+                                                    02</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">PRODUCTS DETAILS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/products-details" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Products Details</a></li>
+                                            <li><a routerLink="/cart" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Cart</a></li>
+                                            <li><a routerLink="/checkout" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Checkout</a></li>
+                                            <li><a routerLink="/wishlist" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Wishlist</a></li>
+                                            <li><a routerLink="/sandbox/profile-authentication" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">My Account</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Dynamic Shop Page</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">HOME</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a routerLink="/" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - One</a></li>
+                            <li class="nav-item"><a routerLink="/index-2" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Two</a></li>
+                            <li class="nav-item"><a routerLink="/index-3" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Three</a>
+                            </li>
+                            <li class="nav-item"><a routerLink="/index-4" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Four</a></li>
+                            <li class="nav-item"><a routerLink="/index-5" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Five</a></li>
+                            <li class="nav-item"><a routerLink="/index-6" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Six</a></li>
+                            <li class="nav-item"><a routerLink="/index-7" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Seven</a>
+                            </li>
+                            <li class="nav-item"><a routerLink="/index-8" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home Demo - Eight</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item megamenu"><a href="javascript:void(0)" class="dropdown-toggle nav-link">SHOP</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Full Width Style 01</a>
+                                            </li>
+                                            <li><a routerLink="/shop-full-width-2" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Full Width Style 02</a>
+                                            </li>
+                                            <li><a routerLink="/shop-left-sidebar-1" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Left Sidebar Style
+                                                    01</a></li>
+                                            <li><a routerLink="/shop-left-sidebar-2" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Left Sidebar Style
+                                                    02</a></li>
+                                            <li><a routerLink="/shop-right-sidebar-1" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Right Sidebar Style
+                                                    01</a></li>
+                                            <li><a routerLink="/shop-right-sidebar-2" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shop Right Sidebar Style
+                                                    02</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">PRODUCTS DETAILS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/products-details" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Products Details</a></li>
+                                            <li><a routerLink="/cart" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Cart</a></li>
+                                            <li><a routerLink="/checkout" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Checkout</a></li>
+                                            <li><a routerLink="/wishlist" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Wishlist</a></li>
+                                            <li><a routerLink="/sandbox/profile-authentication" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">My Account</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Dynamic Shop Page</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">PAGES</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a routerLink="/about" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">About Us</a></li>
+                            <li class="nav-item"><a routerLink="/feedback" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Feedback</a></li>
+                            <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Gallery <i
+                                        class="fas fa-chevron-right"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a routerLink="/gallery-1" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" class="nav-link">Gallery Two
+                                            Column</a></li>
+                                    <li class="nav-item"><a routerLink="/gallery-2" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" class="nav-link">Gallery Three
+                                            Column</a></li>
+                                    <li class="nav-item"><a routerLink="/gallery-3" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" class="nav-link">Gallery Four
+                                            Column</a></li>
+                                    <li class="nav-item"><a routerLink="/gallery-4" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" class="nav-link">Gallery
+                                            Filter</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a routerLink="/faq" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">FAQ</a></li>
+                            <li class="nav-item"><a routerLink="/delivery-returns" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Delivery Returns
+                                    Policy</a></li>
+                            <li class="nav-item"><a routerLink="/shipping" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Shipping Policy</a></li>
+                            <li class="nav-item"><a routerLink="/privacy-policy" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Privacy Policy</a></li>
+                            <li class="nav-item"><a routerLink="/terms-conditions" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Terms & Conditions</a>
+                            </li>
+                            <li class="nav-item"><a routerLink="/not-found" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">404 Error Page</a></li>
+                            <li class="nav-item"><a routerLink="/coming-soon" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Coming Soon</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item megamenu"><a href="javascript:void(0)" class="dropdown-toggle nav-link">MEN</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP BY</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">New in</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Hot Sale</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Clothing</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shoe</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Bag</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">COLLECTIONS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Committed</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">2021 beachwear</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Office looks</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Leather and more</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Denim</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item megamenu"><a href="javascript:void(0)"
+                            class="dropdown-toggle nav-link">WOMEN</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP BY</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">New in</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Hot Sale</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Clothing</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Shoe</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Bag</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">COLLECTIONS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Committed</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">2021 beachwear</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Office looks</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Leather and more</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}">Denim</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">BLOG</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a routerLink="/blog-grid" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Blog Grid</a></li>
+                            <li class="nav-item"><a routerLink="/blog-left-sidebar" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Blog Left Sidebar</a>
+                            </li>
+                            <li class="nav-item"><a routerLink="/blog-right-sidebar" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Blog Right Sidebar</a>
+                            </li>
+                            <li class="nav-item"><a routerLink="/blog-details" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" class="nav-link">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a routerLink="/contact" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}" class="nav-link pt-4 pb-4">CONTACT</a></li>
+                </ul>
+                <ul class="navbar-nav for-responsive">
+                    <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">HOME</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a routerLink="/" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - One</a></li>
+                            <li class="nav-item"><a routerLink="/index-2" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Two</a></li>
+                            <li class="nav-item"><a routerLink="/index-3" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Three</a></li>
+                            <li class="nav-item"><a routerLink="/index-4" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Four</a></li>
+                            <li class="nav-item"><a routerLink="/index-5" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Five</a></li>
+                            <li class="nav-item"><a routerLink="/index-6" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Six</a></li>
+                            <li class="nav-item"><a routerLink="/index-7" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Seven</a></li>
+                            <li class="nav-item"><a routerLink="/index-8" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Home Demo - Eight</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item megamenu"><a href="javascript:void(0)" class="dropdown-toggle nav-link">SHOP</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Full Width Style 01</a></li>
+                                            <li><a routerLink="/shop-full-width-2" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Full Width Style 02</a></li>
+                                            <li><a routerLink="/shop-left-sidebar-1" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Shop Left Sidebar Style 01</a></li>
+                                            <li><a routerLink="/shop-left-sidebar-2" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Shop Left Sidebar Style 02</a></li>
+                                            <li><a routerLink="/shop-right-sidebar-1" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Shop Right Sidebar Style 01</a></li>
+                                            <li><a routerLink="/shop-right-sidebar-2" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Shop Right Sidebar Style 02</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">PRODUCTS DETAILS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/products-details" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Products Details</a></li>
+                                            <li><a routerLink="/cart" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Cart</a></li>
+                                            <li><a routerLink="/checkout" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Checkout</a></li>
+                                            <li><a routerLink="/wishlist" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Wishlist</a></li>
+                                            <li><a routerLink="/sandbox/profile-authentication" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()">My
+                                                    Account</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Dynamic Shop Page</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">PAGES</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a routerLink="/about" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">About Us</a></li>
+                            <li class="nav-item"><a routerLink="/feedback" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Feedback</a></li>
+                            <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Gallery <i
+                                        class="fas fa-chevron-right"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a routerLink="/gallery-1" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                            class="nav-link">Gallery Two Column</a></li>
+                                    <li class="nav-item"><a routerLink="/gallery-2" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                            class="nav-link">Gallery Three Column</a></li>
+                                    <li class="nav-item"><a routerLink="/gallery-3" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                            class="nav-link">Gallery Four Column</a></li>
+                                    <li class="nav-item"><a routerLink="/gallery-4" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                            class="nav-link">Gallery Filter</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a routerLink="/faq" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">FAQ</a></li>
+                            <li class="nav-item"><a routerLink="/delivery-returns" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Delivery Returns Policy</a></li>
+                            <li class="nav-item"><a routerLink="/shipping" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Shipping Policy</a></li>
+                            <li class="nav-item"><a routerLink="/privacy-policy" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Privacy Policy</a></li>
+                            <li class="nav-item"><a routerLink="/terms-conditions" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Terms & Conditions</a></li>
+                            <li class="nav-item"><a routerLink="/not-found" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">404 Error Page</a></li>
+                            <li class="nav-item"><a routerLink="/coming-soon" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Coming Soon</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item megamenu"><a href="javascript:void(0)" class="dropdown-toggle nav-link">MEN</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP BY</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">New in</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Hot Sale</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Clothing</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Shoe</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Bag</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">COLLECTIONS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Committed</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">2021 beachwear</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Office looks</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Leather and more</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Denim</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item megamenu"><a href="javascript:void(0)"
+                            class="dropdown-toggle nav-link">WOMEN</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="submenu-title">SHOP BY</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">New in</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Hot Sale</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Clothing</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Shoe</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Bag</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="submenu-title">COLLECTIONS</h6>
+                                        <ul class="megamenu-submenu">
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Committed</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">2021 beachwear</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Office looks</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Leather and more</a></li>
+                                            <li><a routerLink="/sandbox" routerLinkActive="active"
+                                                    [routerLinkActiveOptions]="{exact: true}"
+                                                    (click)="toggleClass()">Denim</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">BLOG</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a routerLink="/blog-grid" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Blog Grid</a></li>
+                            <li class="nav-item"><a routerLink="/blog-left-sidebar" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Blog Left Sidebar</a></li>
+                            <li class="nav-item"><a routerLink="/blog-right-sidebar" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Blog Right Sidebar</a></li>
+                            <li class="nav-item"><a routerLink="/blog-details" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                                    class="nav-link">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a routerLink="/contact" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()"
+                            class="nav-link pt-4 pb-4">CONTACT</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+<!-- cart-model -->
+<div class="sideCart" [@slideInOut]="stateName">
+    <header class="d-flex align-items-center justify-content-between border-bottom">
+        <h5 class="mb-0"> Products (0) </h5>
+        <span (click)="openCartModel()">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+    </header>
+    <main [ngClass]="products.length == 0 ? 'vh-100 d-flex align-items-center justify-content-center':null ">
+        <div class="empty-cart" *ngIf="(products.length == 0); else cartForm">
+            <p>Your cart is currently empty.</p>
+            <a routerLink="/sandbox"  (click)="openCartModel()" class="default-btn">Return to Shop</a>
+        </div>
+        <ng-template #cartForm>
+            <form class="mt-4 mx-3">
+                <div class="cart-table table-responsive">
+                    <!-- new-cart -->
+                    <ng-container *ngFor="let product of products;">
+                        <div class="d-flex  align-items-center justify-content-between gap-3 border-bottom pb-3 mb-3">
+                            <!-- img -->
+                            <div>
+                                <a [routerLink]="['/products', product.slug]" class="border d-block">
+                                    <img [src]="product.frontImg.url" alt="item" width="75" class="d-block" />
+                                </a>
+                            </div>
+                            <!-- content -->
+                            <div class="flex-fill">
+                                <div class="d-flex align-items-start  justify-content-between">
+                                    <div>
+                                        <span>small text</span>
+                                        <h5>{{ product.title }}</h5>
+                                    </div>
+                                    <div>
+                                        <button (click)="onDeleteItem(product.id)" class="remove">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-2">
+                                    <div>
+                                        <span class="d-block text-decoration-line-through current-th">{{
+                                            product.currencyType }}{{ product.currentPrice }}</span>
+                                        <span class="d-block current-p">${{
+                                            (
+                                                inputnumber * product.currentPrice
+                                            ).toFixed(2)
+                                        }}</span>
+                                    </div>
+                                    <div class="product-quantity">
+                                        <div class="input-counter">
+                                            <span class="minus-btn" (click)="minus()"><i class="fas fa-minus"></i></span>
+                                            <input type="text" [(ngModel)]="inputnumber" name="count">
+                                            <span class="plus-btn" (click)="plus()"><i class="fas fa-plus"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="cart-buttons">
+                        <div class="cart-totals">
+                            <strong class="d-block mb-1">Total : <span>$854.22</span></strong>
+                            <a (click)="getchecout()" class="default-btn">
+                                complete order
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">PRODUCT DETAILS</th>
+                                <th scope="col"> PRICE</th>
+                                <th scope="col">QUANTITY</th>
+                                <th scope="col">AMOUNT</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products;">
+                                <td class="product-thumbnail">
+                                    <a [routerLink]="['/products', product.slug]">
+                                        <img [src]="product.frontImg.url" alt="item" width="75" class="d-block" />
+                                        <h3>{{ product.title }}</h3>
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ product.currencyType }}{{ product.currentPrice }}
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="input-counter">
+                                        <input type="number" value="{{ product.quantity }}" />
+                                    </div>
+                                </td>
+                                <td>
+                                    ${{
+                                    (
+                                    product.quantity * product.currentPrice
+                                    ).toFixed(2)
+                                    }}
+                                </td>
+                                <td>
+                                    <button (click)="onDeleteItem(product.id)" class="remove">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </div>
+                <!-- <div class="cart-buttons">
+                    <div class="cart-totals">
+                        <ul>
+                            <li>
+                                Subtotal <span>${{ total }}</span>
+                            </li>
+                            <li>Shipping <span>$30.00</span></li>
+                            <li>
+                                Total <span>${{ total }}</span>
+                            </li>
+                        </ul>
+                        <a (click)="getchecout()" class="default-btn">
+                            complete order
+                        </a>
+                    </div>
+                </div> -->
+            </form>
+        </ng-template>
+    </main>
+</div>
+<div *ngIf="isCart" class="overlay"></div>
+
+<!-- fixed-header-footer-mobile -->
+<footer class="fiex-footer">
+    <div class="d-flex px-4 align-items-center justify-content-between h-100">
+        <a routerLink="/sandbox/profile-authentication" class="d-flex flex-column align-items-center justify-content-center"
+            title="">
+            <i class="fa-regular fa-user d-block"></i>
+            <strong class="mt-1">Account</strong>
+        </a>
+        <a routerLink="/cart" class="d-flex flex-column align-items-center justify-content-center" title="">
+            <div class="cart_f_m ">
+                <i class="fa-brands fa-opencart d-block"></i>
+                <span>{{ cartProducts.length }}</span>
+            </div>
+            <strong class="mt-1">Cart</strong>
+
+        </a>
+        <a routerLink="/categories-m" class="d-flex flex-column align-items-center justify-content-center" title="">
+            <i class="fa fa-shop d-block"></i>
+            <strong class="mt-1">Categories</strong>
+        </a>
+        <a routerLink="/" class="d-flex flex-column align-items-center justify-content-center" title="">
+            <i class="fa-solid fa-igloo d-block"></i>
+            <strong class="mt-1">Home</strong>
+        </a>
+    </div>
+</footer>

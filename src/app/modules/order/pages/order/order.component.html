@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="loading-container" *ngIf="loading">
+        <span class="spinner-border spinner-border-sm mr-1"></span>
+    </div>
+    <div class="row" *ngIf="orders.length">
+        <div class="col-lg-12 col-md-12 col-sm-12" *ngFor="let order of orders | paginate: { itemsPerPage: params.limit, currentPage: params.page, totalItems: totalOrders} ">
+            <app-order-card [order]="order"></app-order-card>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="pagination-area">
+                <pagination-controls previousLabel="" nextLabel="" [responsive]="true" [maxSize]="9"
+                    (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <app-empty-state  *ngIf="!orders?.length && !loading" [emptyStateData]="emptyStateData" (btnClickEmitter)="onStartShopping()"></app-empty-state>
+
+</div>

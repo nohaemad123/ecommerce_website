@@ -1,0 +1,85 @@
+<div class="electronic-products-card" [attr.id]="'#Product' + cardData.productId">
+    <div class="electronic-image">
+        <a [routerLink]="routingService.navigate('product-details/' + cardData.productId)">
+            <img [src]="
+                    cardData.productImages[0].imageProduct
+                        ? imgBaseUrl + cardData.productImages[0].imageProduct
+                        : imagesFallbackService.handleProductFallback()
+                " alt="image" (error)="imagesFallbackService.handleProductFallback($event)" />
+        </a>
+        <ul class="products-action-list">
+            <li>
+                <a (click)="routingService.route('product-details/' + cardData.productId)">
+                    <i class="fas fa-search-plus"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" (click)="
+                        currentUser.token
+                            ? addToCartUser(cardData)
+                            : addToCartGuest(cardData)
+                    ">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </li>
+            <li>
+                <a (click)="onToggleFavorite()" class="favorite">
+                    <i *ngIf="!cardData.isInFavorite" class="far fa-heart"></i>
+                    <i *ngIf="cardData.isInFavorite" class="fa-solid fa-heart colored-heart"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="new" *ngIf="cardData.label">
+            {{ cardData.label }}
+        </div>
+    </div>
+    <div class="electronic-content">
+        <b> {{ cardData.categories[0]?.name }}</b>
+        <h3 class="product-name">
+            <a class="d-block" (click)="routingService.route('product-details/' + cardData.productId)">{{
+                cardData.productName }}</a>
+        </h3>
+        <div class="rating_d">
+            <ul class="rating" *ngIf="cardData.rate">
+                <li>
+                    <i class="fas fa-star" [ngClass]="{
+                            checked: cardData.rate == 1 || cardData.rate > 1
+                        }"></i>
+                </li>
+                <li>
+                    <i class="fas fa-star" [ngClass]="{
+                            checked: cardData.rate == 2 || cardData.rate > 2
+                        }"></i>
+                </li>
+                <li>
+                    <i class="fas fa-star" [ngClass]="{
+                            checked: cardData.rate == 3 || cardData.rate > 3
+                        }"></i>
+                </li>
+                <li>
+                    <i class="fas fa-star" [ngClass]="{
+                            checked: cardData.rate == 4 || cardData.rate > 4
+                        }"></i>
+                </li>
+                <li>
+                    <i class="fas fa-star" [ngClass]="{
+                            checked: cardData.rate == 5
+                        }"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="price">
+            <span class="new-price">
+                {{
+                (cardData.priceAfterDiscount
+                ? +cardData.priceAfterDiscount.toFixed(2)
+                : +cardData.productPrice.toFixed(2)
+                ) | customCurrency : currentCurrency
+                }}</span>
+            <span class="old-price" *ngIf="cardData.priceAfterDiscount">{{
+                +cardData.productPrice.toFixed(2)
+                | customCurrency : currentCurrency
+                }}</span>
+        </div>
+    </div>
+</div>

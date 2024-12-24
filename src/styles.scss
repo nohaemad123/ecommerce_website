@@ -1,0 +1,20 @@
+@import './assets/scss/template_1.scss';
+@import './assets/scss/rtl.scss';
+
+:root {
+    --fontFamily: 'Roboto', sans-serif;
+    --mainColor: #CF0018;
+    --whiteColor: #ffffff;
+    --blackColor: #000000;
+    --optionalColor: #666666;
+    --transition: .5s;
+    --fontSize: 16px;
+    --groceryColor: #64A606;
+}
+
+.theme-1 {
+    @include theme-1-mixin();
+}
+
+
+

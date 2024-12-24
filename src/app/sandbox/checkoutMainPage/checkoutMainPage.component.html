@@ -1,0 +1,451 @@
+<!-- Page Title -->
+<div class="page-title-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-md-7">
+				<h2>checkout page</h2>
+			</div>
+			<div class="col-lg-6 col-md-5">
+				<ul class="page-title-content">
+					<li><a routerLink="/">Home</a></li>
+					<li>checkout</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Products Details -->
+<div class="products-details-area ptb-70 position-relative checkout_page">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-12 col-sm-12 col-xl-9 col-lg-8">
+				<!-- Shipping Address -->
+				<div class="shipping_address">
+					<div class="border p-4 my-profile-page my_address">
+						<div class="head d-flex align-items-center justify-content-between mb-2">
+							<h3 class="font-medium mb-0">Shipping Address</h3>
+							<!-- add_address -->
+							<div class="add_btn" (click)="openForm()">
+								<a title="btn" type="text" class="font-medium">
+									<i class="fa-regular fa-plus me-1"></i>
+									<span>add new address</span>
+								</a>
+							</div>
+						</div>
+						<!-- add_form -->
+						<div *ngIf="isOpen" class="add_form mb-3">
+							<form class="row">
+								<div class="form-group position-relative select-box col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Country:</label>
+									<select title="btn" class="form-control">
+										<option>Country</option>
+										<option>EGYPT</option>
+										<option>Saudi Arabia</option>
+										<option>UAE</option>
+										<option>Qatar</option>
+									</select>
+								</div>
+								<div class="form-group position-relative select-box col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>City:</label>
+									<select title="btn" class="form-control">
+										<option>City</option>
+										<option>EGYPT</option>
+										<option>Saudi Arabia</option>
+										<option>UAE</option>
+										<option>Qatar</option>
+									</select>
+								</div>
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Street</label>
+									<input type="text" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-solid fa-road"></i>
+									</div>
+								</div>
+								<div class="form-group  position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Neighborhood number</label>
+									<input type="text" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-solid fa-archway"></i>
+									</div>
+								</div>
+								<div class="add_btn add_btn_s">
+									<button title="btn" type="submit">
+										Save
+									</button>
+								</div>
+							</form>
+						</div>
+						<!-- listOfAddress -->
+						<div class="listOfAddress">
+							<div class="grid-container">
+								<div class="item primary_address d-flex align-items-center gap-4 position-relative">
+									<div class="select_address">
+										<label>
+											<input type="radio" name="radio-group" checked />
+										</label>
+									</div>
+									<div>
+										<div class="title_b d-flex align-items-center justify-content-between">
+											<div class="d-flex align-items-center gap-3">
+												<a href="#" class="edit font-medium"><i
+														class="fa-regular fa-pen-to-square"></i></a>
+											</div>
+										</div>
+										<div class="d-flex align-items-start gap-4 mb-2">
+											<span>Name</span>
+											<div>
+												<p>Ali Mohamed Said</p>
+											</div>
+										</div>
+										<div class="d-flex align-items-start gap-4 mb-2">
+											<span>Address</span>
+											<div>
+												<p class="font-medium">Grand Mosque Street, off Street 18</p>
+												<small>Cairo,Egypt</small>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item d-flex align-items-center gap-4 position-relative">
+									<div class="select_address">
+										<label>
+											<input type="radio" name="radio-group" />
+										</label>
+									</div>
+									<div>
+										<div class="title_b d-flex align-items-center justify-content-between">
+											<div>
+												<!-- <h4 class="font-medium">Primary address</h4> -->
+											</div>
+											<div class="d-flex align-items-center gap-3">
+												<a href="#" class="edit font-medium"><i
+														class="fa-regular fa-pen-to-square"></i></a>
+											</div>
+										</div>
+										<div class="d-flex align-items-start gap-4 mb-2">
+											<span>Name</span>
+											<div>
+												<p>Ali Mohamed Said</p>
+											</div>
+										</div>
+										<div class="d-flex align-items-start gap-4 mb-2">
+											<span>Address</span>
+											<div>
+												<p class="font-medium">Grand Mosque Street, off Street 18</p>
+												<small>Cairo,Egypt</small>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item d-flex align-items-center gap-3 gap-4 position-relative">
+									<div class="select_address">
+										<label>
+											<input type="radio" name="radio-group" />
+										</label>
+									</div>
+									<div>
+										<div class="title_b d-flex align-items-center justify-content-between">
+											<div>
+												<!-- <h4 class="font-medium">Primary address</h4> -->
+											</div>
+											<div class="d-flex align-items-center gap-3">
+												<a href="#" class="edit font-medium"><i
+														class="fa-regular fa-pen-to-square"></i></a>
+											</div>
+										</div>
+										<div class="d-flex align-items-start gap-4 mb-2">
+											<span>Name</span>
+											<div>
+												<p>Ali Mohamed Said</p>
+											</div>
+										</div>
+										<div class="d-flex align-items-start gap-4 mb-2">
+											<span>Address</span>
+											<div>
+												<p class="font-medium">Grand Mosque Street, off Street 18</p>
+												<small>Cairo,Egypt</small>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="add_btn mt-4" (click)="openNewAdd()">
+							<button title="btn" type="submit">
+								<i class="fa-solid fa-user-plus me-2"></i>
+								<span>Someone else will receive it</span>
+							</button>
+						</div>
+						<!-- add_form -->
+						<div *ngIf="isOpenNew" class="add_form mb-3">
+							<form class="row">
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>recipient's name</label>
+									<input type="text" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-regular fa-user"></i>
+									</div>
+								</div>
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Phone</label>
+									<input type="number" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-solid fa-phone"></i>
+									</div>
+								</div>
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Email</label>
+									<input type="email" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-regular fa-envelope"></i>
+									</div>
+								</div>
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6 select-box">
+									<label>Country:</label>
+									<select class="form-control">
+										<option>Country</option>
+										<option>EGYPT</option>
+										<option>Saudi Arabia</option>
+										<option>UAE</option>
+										<option>Qatar</option>
+									</select>
+								</div>
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6 select-box">
+									<label>City:</label>
+									<select class="form-control">
+										<option>City</option>
+										<option>EGYPT</option>
+										<option>Saudi Arabia</option>
+										<option>UAE</option>
+										<option>Qatar</option>
+									</select>
+								</div>
+								<div class="form-group position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Street</label>
+									<input type="text" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-solid fa-road"></i>
+									</div>
+								</div>
+								<div class="form-group  position-relative col-12 col-md-12 col-sm-12 col-xl-6 col-lg-6">
+									<label>Neighborhood number</label>
+									<input type="text" title="control" class="form-control" autofocus>
+									<div class="input_icon">
+										<i class="fa-solid fa-archway"></i>
+									</div>
+								</div>
+								<div class="add_btn add_btn_s">
+									<button title="btn" type="submit">
+										Save
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- your Orders -->
+				<div class="border p-4 my-profile-page my_orders mt-3">
+					<div class="head d-flex align-items-center justify-content-between mb-4">
+						<h3 class="font-medium mb-0">Your Order</h3>
+					</div>
+					<!-- product -->
+					<div class="pro_info d-flex align-items-center justify-content-start gap-3">
+						<div class="d-flex align-items-center gap-3 ">
+							<div class="img position-relative">
+								<img src="../../../assets/img/home-eight/info-shape.png" width="120" alt="">
+								<div class="count">
+									<span>1</span>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center gap-3 ">
+							<div class="img position-relative">
+								<img src="../../../assets/img/home-eight/products-details.jpg" width="120" alt="">
+								<div class="count">
+									<span>3</span>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center gap-3 ">
+							<div class="img position-relative">
+								<img src="../../../assets/img/home-eight/products4.jpg" width="120" alt="">
+								<div class="count">
+									<span>12</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- go to my orders list -->
+					<div class="list_orders">
+						<a title="btn" type="text" class="font-medium">
+							<i class="fa-solid fa-angle-left"></i>
+							<span class="mx-1"></span>
+							<span>My orders List</span>
+						</a>
+					</div>
+				</div>
+
+				<!-- paymentMethods -->
+				<div class="border p-4 my-profile-page paymentMethods mt-3">
+					<div class="head d-flex align-items-center justify-content-between mb-4">
+						<h3 class="font-medium mb-0">Payment Methods</h3>
+					</div>
+
+					<div>
+						<div class="border p-3 d-flex align-items-center justify-content-between mb-3">
+							<div class="select_address">
+								<label class="d-flex align-items-center gap-2">
+									<input type="radio" name="radio-group" checked />
+									<span>Mddi bank card</span>
+								</label>
+							</div>
+							<div>
+								<img src="../../../assets/img/5dd825e.png" width="40" alt="">
+							</div>
+						</div>
+						<div class="border p-3 d-flex align-items-center justify-content-between mb-3">
+							<div class="select_address">
+								<label class="d-flex align-items-center gap-2">
+									<input type="radio" name="radio-group" (change)="selectedOption = 'formAccount'" />
+									<span>Credit card
+									</span>
+								</label>
+							</div>
+							<div class="d-flex align-items-center gap-1">
+								<img src="../../../assets/img/642669a.png" width="40" alt="">
+								<img src="../../../assets/img/85c2642.png" width="40" alt="">
+							</div>
+						</div>
+						<!-- addBankAccount -->
+						<div *ngIf="selectedOption === 'formAccount'" class="add_form mb-3">
+							<form>
+								<div class="d-flex align-items-center gap-3 formAccount">
+									<div class="form-group position-relative">
+										<label>Street</label>
+										<input type="text" title="control" class="form-control" autofocus>
+										<div class="input_icon">
+											<i class="fa-regular fa-credit-card"></i>
+										</div>
+									</div>
+									<div class="d-flex align-items-center gap-3">
+										<div class="form-group  position-relative">
+											<label>Neighborhood number</label>
+											<input type="text" title="control" class="form-control" autofocus>
+											<div class="input_icon">
+												<i class="fa-regular fa-calendar-days"></i>
+											</div>
+										</div>
+										<div class="form-group  position-relative">
+											<label>CVV</label>
+											<input type="text" title="control" class="form-control" autofocus>
+											<div class="input_icon">
+												<i class="fa-solid fa-check-to-slot"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" id="remember-me" />
+									<label class="form-check-label" for="remember-me">
+										Save my card
+
+									</label>
+								</div>
+								<div class="add_btn add_btn_s">
+									<button title="btn" type="submit">
+										Confirm
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="border p-3 d-flex align-items-center justify-content-between mb-3">
+							<div class="select_address">
+								<label class="d-flex align-items-center gap-2">
+									<input type="radio" name="radio-group" checked />
+									<span>Divide it by 4 without interest
+									</span>
+								</label>
+							</div>
+							<div class="d-flex align-items-center gap-1">
+								<!-- <img src="../../../assets/img/642669a.png" width="40" alt="">
+								<img src="../../../assets/img/85c2642.png" width="40" alt=""> -->
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="col-12 col-md-12 col-sm-12 col-xl-3 col-lg-4 ">
+				<div class="border p-3 mt-mm">
+					<!-- add-icon -->
+					<div class="add_code mb-4">
+						<form>
+							<div class="d-flex align-items-center gap-2">
+								<div class="form-group position-relative">
+									<label>Add discount code</label>
+									<input type="text" title="control" class="form-control" autofocus>
+								</div>
+								<div class="add_btn add_btn_s">
+									<button title="btn" type="submit">
+										Confirm
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- notes -->
+					<div class="add_notes position-relative mb-4">
+						<form>
+							<div>
+								<div class="form-group position-relative">
+									<label>Your comments <small>optional</small> </label>
+									<textarea rows="6" title="control" class="form-control" autofocus></textarea>
+								</div>
+								<div class="add_btn add_btn_s">
+									<button title="btn" type="submit">
+										<i class="fa-regular fa-paper-plane"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- order_summary -->
+					<div class="p-2 delivery_info">
+						<div>
+							<h4>Invoice details
+							</h4>
+						</div>
+						<div class="summary_t">
+							<div class="mb-2 font-medium d-flex align-items-center gap-3"><span>Subtotal :</span>
+								<strong class="font-medium">$123.43</strong>
+							</div>
+							<div class="mb-2 font-medium d-flex align-items-center gap-3"> <span>Value added tax
+									:</span> <strong class="font-medium">$123.43</strong></div>
+							<div class="mb-2 font-medium d-flex align-items-center gap-3"> <span>Delivery Charge
+									:</span> <strong class="font-medium">$123.43</strong></div>
+							<div class="mb-2 font-medium d-flex align-items-center gap-3"> <span>Delivery fees discount
+									:</span> <strong class="font-medium txt-g">$123.43</strong></div>
+							<div class="border-top pt-3 mt-3 total align-items-center">
+								<div class="mb-2 d-flex align-items-center gap-3"> <span>Total :</span>
+									<strong>$123.43</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="add_btn add_btn_s add_btn_c mt-3">
+						<button title="btn" type="submit">
+							Confirm Oreder
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

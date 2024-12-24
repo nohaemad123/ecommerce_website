@@ -1,0 +1,17 @@
+<div class="electronic-products-area pt-5 pb-5" *ngIf="products?.length && !loading">
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>{{ componentData.title }}</h2>
+        </div>
+        <div class="row justify-content-center">
+            <ng-container *ngFor="let product of products">
+                <div class="col-6 col-lg-3 col-sm-6">
+                  <app-product-card-one [cardData]="product"></app-product-card-one>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

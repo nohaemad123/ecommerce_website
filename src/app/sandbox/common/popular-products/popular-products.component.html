@@ -1,0 +1,870 @@
+<div
+    class="popular-item-area pt-100 pb-100"
+    [ngClass]="{'d-none': router.url === '/index-7' || router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xl-6 col-lg-12 col-md-12">
+                <div class="popular-item-add-card">
+                    <img src="assets/img/home-six/popular/add.jpg" alt="image">
+                    <div class="content">
+                        <span>Up to 50% Off</span>
+                        <h3>Strawberry Juice</h3>
+                        <a routerLink="/shop-full-width-1" class="default-btn-with-border-radius">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12">
+                <div class="section-heading-title text-start">
+                    <h2>Popular Item</h2>
+                </div>
+                <div class="popular-item-slides">
+                    <owl-carousel-o [options]="popularProductsSlides">
+                        <ng-template carouselSlide>
+                            <div class="popular-item-card">
+                                <div class="popular-image">
+                                    <a routerLink="/products-details">
+                                        <img src="assets/img/home-six/popular/popular1.jpg" alt="image">
+                                    </a>
+                                    <div class="new">New</div>
+                                </div>
+                                <div class="popular-content">
+                                    <h3>
+                                        <a routerLink="/products-details">Headphone</a>
+                                    </h3>
+                                    <div class="price">
+                                        <span class="new-price">$65.00</span>
+                                        <span class="old-price">$80.00</span>
+                                    </div>
+                                    <ul class="rating">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template carouselSlide>
+                            <div class="popular-item-card">
+                                <div class="popular-image">
+                                    <a routerLink="/products-details">
+                                        <img src="assets/img/home-six/popular/popular2.jpg" alt="image">
+                                    </a>
+                                    <div class="sale">Sale</div>
+                                </div>
+                                <div class="popular-content">
+                                    <h3>
+                                        <a routerLink="/products-details">Smartphone</a>
+                                    </h3>
+                                    <div class="price">
+                                        <span class="new-price">$250.00</span>
+                                        <span class="old-price">$275.00</span>
+                                    </div>
+                                    <ul class="rating">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template carouselSlide>
+                            <div class="popular-item-card">
+                                <div class="popular-image">
+                                    <a routerLink="/products-details">
+                                        <img src="assets/img/home-six/popular/popular1.jpg" alt="image">
+                                    </a>
+                                    <div class="new">New</div>
+                                </div>
+                                <div class="popular-content">
+                                    <h3>
+                                        <a routerLink="/products-details">Headphone</a>
+                                    </h3>
+                                    <div class="price">
+                                        <span class="new-price">$65.00</span>
+                                        <span class="old-price">$80.00</span>
+                                    </div>
+                                    <ul class="rating">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template carouselSlide>
+                            <div class="popular-item-card">
+                                <div class="popular-image">
+                                    <a routerLink="/products-details">
+                                        <img src="assets/img/home-six/popular/popular2.jpg" alt="image">
+                                    </a>
+                                    <div class="sale">Sale</div>
+                                </div>
+                                <div class="popular-content">
+                                    <h3>
+                                        <a routerLink="/products-details">Smartphone</a>
+                                    </h3>
+                                    <div class="price">
+                                        <span class="new-price">$250.00</span>
+                                        <span class="old-price">$275.00</span>
+                                    </div>
+                                    <ul class="rating">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This section for Home Demo - 7 -->
+<div
+    class="electronic-products-area pt-100 pb-70 d-none"
+    [ngClass]="{'d-block': router.url === '/index-7'}"
+>
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>Popular Products</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products5.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="new">Hot</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Washing Machine</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$300.00</span>
+                            <span class="old-price">$320.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products6.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sale">Sale</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Mobile & Tab</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$500.00</span>
+                            <span class="old-price">$700.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products7.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="new">New</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Headphone</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$20.00</span>
+                            <span class="old-price">$25.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products8.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sale">Sale</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Supor Sound Speaker</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$35.00</span>
+                            <span class="old-price">$50.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products9.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sale">Sale</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Hair Care</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$15.00</span>
+                            <span class="old-price">$20.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products10.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="new">New</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Coils Black Blue Cable</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$12.00</span>
+                            <span class="old-price">$16.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products11.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="new">Hot</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Gaming Device</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$9.00</span>
+                            <span class="old-price">$15.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="electronic-products-card">
+                    <div class="electronic-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-seven/products/products12.jpg" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sale">Sale</div>
+                    </div>
+                    <div class="electronic-content">
+                        <b>Gadgets</b>
+                        <h3>
+                            <a routerLink="/products-details">Massage Gun</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$34.00</span>
+                            <span class="old-price">$55.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This section for Home Demo - 8 -->
+<div
+    class="grocery-products-area pt-100 pb-70 d-none"
+    [ngClass]="{'d-block': router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>Popular Products</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products5.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Fruit</b>
+                        <h3>
+                            <a routerLink="/products-details">Pomegranate With Leaves</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$29.00</span>
+                            <span class="old-price">$30.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="new">Hot</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products6.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Spice</b>
+                        <h3>
+                            <a routerLink="/products-details">Russian Dumplings</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$19.00</span>
+                            <span class="old-price">$25.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="sale">Sale</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products7.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Meat</b>
+                        <h3>
+                            <a routerLink="/products-details">Raw Chicken Breast</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$29.00</span>
+                            <span class="old-price">$30.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="new">New</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products8.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Bakery</b>
+                        <h3>
+                            <a routerLink="/products-details">Chocolate Marshmallows</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$5.00</span>
+                            <span class="old-price">$7.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="sale">Sale</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products9.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Vegetable</b>
+                        <h3>
+                            <a routerLink="/products-details">Dried Fish</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$15.00</span>
+                            <span class="old-price">$17.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="sale">Sale</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products10.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Spice</b>
+                        <h3>
+                            <a routerLink="/products-details">Crab Sticks</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$12.00</span>
+                            <span class="old-price">$15.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="new">New</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products11.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Food</b>
+                        <h3>
+                            <a routerLink="/products-details">Quail Eggs</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$9.00</span>
+                            <span class="old-price">$12.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="new">Hot</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="grocery-products-card">
+                    <div class="grocery-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-eight/products/products12.png" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/products-details">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grocery-content">
+                        <b>Meat</b>
+                        <h3>
+                            <a routerLink="/products-details">Fresh Piece of Raw Beef</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$20.00</span>
+                            <span class="old-price">$25.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="sale">Sale</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grocery-products-shape-1">
+        <img src="assets/img/home-eight/products/shape1.png" alt="image">
+    </div>
+    <div class="grocery-products-shape-2">
+        <img src="assets/img/home-eight/products/shape2.png" alt="image">
+    </div>
+</div>

@@ -1,0 +1,521 @@
+<div
+    class="products-area pb-100"
+    [ngClass]="{'d-none': router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <h2><span>Best Selling Products</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+        <div class="products-slides">
+            <owl-carousel-o [options]="productsSlides">
+                <ng-template carouselSlide *ngFor="let content of products">
+                    <div class="single-products-box">
+                        <a
+                            [routerLink]="['/products', content.slug]"
+                            class="d-block"
+                        >
+                            <img
+                                [src]="content.frontImg.url"
+                                alt="products-image"
+                            />
+                        </a>
+                        <ul class="products-button">
+                            <li>
+                                <button
+                                    type="button"
+                                    (click)="
+                                        triggerModal(modalData);
+                                        addToModal(content)
+                                    "
+                                >
+                                    <i class="fas fa-search-plus"></i>
+                                    <span class="tooltip-label">
+                                        Quick View
+                                    </span>
+                                </button>
+                            </li>
+                            <li>
+                                <a routerLink="/compare">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span class="tooltip-label">Compare</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                    <span class="tooltip-label">
+                                        Add to Wishlist
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <span class="sale" *ngIf="content.onSell">
+                            SALE
+                        </span>
+                        <span class="out-of-stock" *ngIf="content.outOfStock">
+                            Out of Stock
+                        </span>
+                        <span class="hot" *ngIf="content.hot">HOT</span>
+                        <div class="content">
+                            <h3>
+                                <a [routerLink]="['/products', content.slug]">
+                                    {{ content.title }}
+                                </a>
+                            </h3>
+                            <button
+                                class="add-to-cart-btn"
+                                (click)="addToCart(content)"
+                            >
+                                Add to cart <i class="fas fa-cart-plus"></i>
+                            </button>
+                            <div class="price">
+                                <span class="old-price" *ngIf="content.oldPrice">
+                                    {{ content.currencyType }}{{ content.oldPrice }}
+                                </span>
+                                <span class="new-price">
+                                    {{ content.currencyType }}{{ content.currentPrice }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalData let-modal>
+    <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+    >
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="modal-body" *ngIf="modalProduct">
+        <div
+            class="row align-items-center"
+            *ngFor="let product of modalProduct;"
+        >
+            <div class="col-lg-6 col-md-6">
+                <div class="image">
+                    <img [src]="product.frontImg.url" alt="image" />
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="content">
+                    <h3>{{ product.title }}</h3>
+                    <div class="price">
+                        <span class="new-price">
+                            {{ product.currencyType }}{{ product.currentPrice }}
+                        </span>
+                        <span class="old-price" *ngIf="product.oldPrice">
+                            {{ product.currencyType }}{{ product.oldPrice }}
+                        </span>
+                    </div>
+                    <p>{{ product.shortDesc }}</p>
+                    <ul class="products-info">
+                        <li>
+                            <span>Vendor:</span>
+                            <a routerLink="/shop-full-width-1">{{ product.vendor }}</a>
+                        </li>
+                        <li *ngIf="product.inStock">
+                            <span>Availability:</span> 
+                            In stock
+                        </li>
+                        <li>
+                            <span>Categories:</span>
+                            <a routerLink="/shop-full-width-1">Hoodie</a>
+                        </li>
+                    </ul>
+                    <div class="products-add-to-cart">
+                        <button
+                            (click)="addToCart(product)"
+                            type="submit"
+                            class="default-btn"
+                        >
+                            <i class="fas fa-shopping-bag"></i> ADD TO CART
+                        </button>
+                        <a
+                            routerLink="/wishlist"
+                            title="Add to Wishlist"
+                            class="add-to-wishlist-btn"
+                            ><i class="far fa-heart"></i
+                        ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- This section for Home Demo - 8 -->
+<div
+    class="grocery-products-area with-bottom pb-70 d-none"
+    [ngClass]="{'d-block': router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>Fresh Grocery Item</h2>
+            <p>You can easily buy all the grocery products of your choice from our site.</p>
+        </div>
+        <div class="grocery-products-slides">
+            <owl-carousel-o [options]="groceryProductsSlides">
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products1.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Vegetable</b>
+                            <h3>
+                                <a routerLink="/products-details">Fresh Beetroot Vegetable</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$29.00</span>
+                                <span class="old-price">$30.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="new">Hot</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products2.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Spice</b>
+                            <h3>
+                                <a routerLink="/products-details">Onion And Black Pepper</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$25.00</span>
+                                <span class="old-price">$28.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="sale">Sale</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products3.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Fruit</b>
+                            <h3>
+                                <a routerLink="/products-details">Kiwi Fruit</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$35.00</span>
+                                <span class="old-price">$38.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="sale">Sale</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products4.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Bakery</b>
+                            <h3>
+                                <a routerLink="/products-details">Chanterelle Mushrooms</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$45.00</span>
+                                <span class="old-price">$50.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="new">New</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products1.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Vegetable</b>
+                            <h3>
+                                <a routerLink="/products-details">Fresh Beetroot Vegetable</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$29.00</span>
+                                <span class="old-price">$30.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="new">Hot</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products2.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Spice</b>
+                            <h3>
+                                <a routerLink="/products-details">Onion And Black Pepper</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$25.00</span>
+                                <span class="old-price">$28.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="sale">Sale</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products3.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Fruit</b>
+                            <h3>
+                                <a routerLink="/products-details">Kiwi Fruit</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$35.00</span>
+                                <span class="old-price">$38.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="sale">Sale</div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-products-card">
+                        <div class="grocery-image">
+                            <a routerLink="/products-details">
+                                <img src="assets/img/home-eight/products/products4.png" alt="image">
+                            </a>
+                            <ul class="products-action-list">
+                                <li>
+                                    <a routerLink="/products-details">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grocery-content">
+                            <b>Bakery</b>
+                            <h3>
+                                <a routerLink="/products-details">Chanterelle Mushrooms</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">$45.00</span>
+                                <span class="old-price">$50.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="new">New</div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

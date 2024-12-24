@@ -1,0 +1,85 @@
+<!-- Profile Authentication -->
+<div class="profile-authentication-area ptb-70">
+    <div class="container">
+        <div class="row box-s">
+            <div class="col-lg-6 col-md-12 col-sm-12 login">
+                <div class="login-form">
+
+                    <h2>{{ "AUTH.LOGIN" | translate }}</h2>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="alert alert-danger" role="alert" *ngIf="error">
+                            <p>{{ error }}</p>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>{{ "AUTH.LABELS.EMAIL" | translate }}</label>
+                            <input type="text" class="form-control" [placeholder]="'AUTH.LABELS.EMAIL' | translate"
+                                formControlName="email" class="form-control" aria-describedby="login-email" tabindex="1"
+                                autofocus [ngClass]="{
+                                    'is-invalid':
+                                        submitted &&
+                                        loginFormControls.email.errors
+                                }" />
+                            <div *ngIf="
+                                    submitted && loginFormControls.email.errors
+                                " class="invalid-feedback">
+                                <div *ngIf="
+                                        loginFormControls.email.errors.required
+                                    ">
+                                    {{ "AUTH.Email_required" | translate }}
+                                </div>
+                                <div *ngIf="loginFormControls.email.errors.email">
+                                    {{ "AUTH.Email_must_be_valid" | translate }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>{{
+                                "AUTH.LABELS.PASSWORD" | translate
+                                }}</label>
+                            <input formControlName="password" class="form-control" tabindex="2"
+                                aria-describedby="login-password" type="password"
+                                [ngClass]="{ 'is-invalid': submitted && loginFormControls.password.errors }"
+                                [placeholder]="'AUTH.LABELS.PASSWORD' | translate" />
+                            <div *ngIf="submitted && loginFormControls.password.errors" class="invalid-feedback">
+                                <div *ngIf="loginFormControls.password.errors.required">
+                                    {{ "AUTH.password_required" | translate }}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-12 col-sm-6 remember-me-wrap">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me">
+                                        {{ "AUTH.Rememberme" | translate }}
+
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6 col-md-12 col-sm-6 lost-your-password-wrap">
+                                <a routerLink="/" class="lost-your-password">
+                                    {{ "AUTH.lostPassword" | translate }}
+                                    </a>
+                            </div> -->
+                        </div>
+
+                        <button type="submit" [disabled]="loading" tabindex="4" rippleEffect>
+                            <span *ngIf="loading"
+                                class="spinner-border spinner-border-sm mr-1"></span>{{'AUTH.LOGIN_TITLE' | translate}}
+                        </button>
+
+                        <p class="text-center mt-1 col-12">
+                            <span>{{ "AUTH.LINKS.NO_ACCOUNT" | translate }}</span>
+                            <!-- <a class="font-bold" [routerLink]="routingService.navigate('register')" -->
+                            <a class="font-bold" (click)="routingService.route('authentication/register')"
+                                href="javascript:;">
+                                <span>&nbsp;{{ "AUTH.LINKS.SIGN_UP" | translate }}</span></a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

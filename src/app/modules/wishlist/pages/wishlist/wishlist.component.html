@@ -1,0 +1,41 @@
+<!-- Page Title -->
+<!-- <div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>{{'wishlist.title'|translate}}</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">{{'wishlist.home'|translate}}</a></li>
+                    <li>{{'wishlist.title'|translate}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="products-area border p-4 my-profile-page">
+    <div class="head">
+        <h3 class="font-medium">{{'wishlist.title'|translate}}</h3>
+        <small>{{'wishlist.desc'|translate}}</small>
+    </div>
+    <div class="container">
+        <div class="row" *ngIf="productsData.length && !loading">
+            <div class="col-6 col-xl-3 col-lg-4 col-md-4 col-sm-6"
+                *ngFor="let product of productsData | paginate: { itemsPerPage: filterCriteria.limit, currentPage: filterCriteria.page, totalItems: totalProducts}">
+                <app-product-card-one [cardData]="product" (removeFromFavoriteEmitter)="fetchWishlistProducts()"></app-product-card-one>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="pagination-area">
+                    <pagination-controls previousLabel="" nextLabel="" [responsive]="true" [maxSize]="9"
+                        (pageChange)="onPageChange($event)"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <app-empty-state  *ngIf="!productsData?.length && !loading" [emptyStateData]="emptyStateData" (btnClickEmitter)="onReturnToHome()"></app-empty-state>
+        <div class="loading-container" *ngIf="loading">
+            <span class="spinner-border spinner-border-sm mr-1"></span>
+        </div>
+    
+    </div>
+</div>

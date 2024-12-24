@@ -1,0 +1,383 @@
+.summer-overview-inner-card {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    
+    .content {
+        max-width: 750px;
+        padding: {
+            top: 120px;
+            left: 100px;
+            right: 100px;
+            bottom: 120px;
+        };
+        span {
+            color: var(--optionalColor);
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 18px;
+
+            b {
+                color: var(--mainColor);
+            }
+        }
+        h3 {
+            font-size: 80px;
+            margin-bottom: 25px;
+        }
+    }
+}
+.d-none {
+    &.d-block {
+        display: block !important;
+    }
+}
+.electronic-overview-inner-box {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    padding: {
+        left: 100px;
+        right: 100px;
+    };
+    .overview-content {
+        h3 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            color: var(--whiteColor);
+        }
+    }
+}
+.black-friday-offer-area {
+    background-color: #FCF2F2;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    
+    &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 355px;
+        background-color: var(--groceryColor);
+        z-index: -1;
+    }
+}
+.black-friday-offer-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    height: 600px;
+    width: 600px;
+    margin: auto;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 50%;
+        border: 1px solid var(--groceryColor);
+    }
+    .content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        padding: 55px;
+
+        .logo {
+            margin-bottom: 35px;
+        }
+        span {
+            display: block;
+            margin-bottom: 15px;
+            color: var(--groceryColor);
+        }
+        h3 {
+            font-size: 30px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .default-btn-with-border-radius {
+            background-color: var(--groceryColor);
+
+            &:hover {
+                background-color: var(--blackColor);
+            }
+        }
+    }
+    .icon1 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -20px;
+        margin: auto;
+
+        img {
+            background-color: #FCF2F2;
+        }
+    }
+    .icon2 {
+        position: absolute;
+        left: -25px;
+        top: 35%;
+        transform: translateY(-35%);
+        margin: auto;
+
+        img {
+            background-color: #FCF2F2;
+        }
+    }
+    .icon3 {
+        position: absolute;
+        right: -25px;
+        top: 35%;
+        transform: translateY(-35%);
+        margin: auto;
+
+        img {
+            background-color: #FCF2F2;
+        }
+    }
+    .shape-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -90px;
+        margin: auto;
+    }
+}
+.black-friday-offer-image {
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%) translateX(-2%);
+    z-index: -1;
+}
+.black-friday-offer-shape-1 {
+    position: absolute;
+    left: -12px;
+    top: 0;
+    z-index: -1;
+}
+.black-friday-offer-shape-2 {
+    position: absolute;
+    right: -35px;
+    top: 10px;
+    z-index: -1;
+}
+.black-friday-offer-logo-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 55px;
+    z-index: -1;
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .summer-overview-inner-card {
+        .content {
+            max-width: 100%;
+            padding: {
+                top: 60px;
+                left: 20px;
+                right: 20px;
+                bottom: 60px;
+            };
+            span {
+                font-size: 15px;
+            }
+            h3 {
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .electronic-overview-inner-box {
+        padding: {
+            left: 20px;
+            right: 20px;
+        };
+        .overview-content {
+            h3 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .black-friday-offer-area {
+        &::before {
+            display: none;
+        }
+    }
+    .black-friday-offer-logo-image, .black-friday-offer-image, .black-friday-offer-shape-1, .black-friday-offer-shape-2 {
+        display: none;
+    }
+    .black-friday-offer-content {
+        height: 100%;
+        width: 100%;
+
+        &::before {
+            display: none;
+        }
+        .content {
+            position: relative;
+            left: 0;
+            right: 0;
+            top: unset;
+            transform: unset;
+            padding: 0;
+
+            h3 {
+                font-size: 25px;
+            }
+        }
+        .icon1 {
+            display: none;
+        }
+        .icon2 {
+            display: none;
+        }
+        .icon3 {
+            display: none;
+        }
+        .shape-wrap {
+            display: none;
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .summer-overview-inner-card {
+        .content {
+            max-width: 100%;
+            padding: {
+                top: 80px;
+                left: 30px;
+                right: 30px;
+                bottom: 80px;
+            };
+            span {
+                font-size: 16px;
+            }
+            h3 {
+                font-size: 35px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .black-friday-offer-area {
+        &::before {
+            display: none;
+        }
+    }
+    .black-friday-offer-logo-image, .black-friday-offer-image, .black-friday-offer-shape-1, .black-friday-offer-shape-2 {
+        display: none;
+    }
+    .black-friday-offer-content {
+        height: 100%;
+        width: 100%;
+
+        &::before {
+            display: none;
+        }
+        .content {
+            position: relative;
+            left: 0;
+            right: 0;
+            top: unset;
+            transform: unset;
+            padding: 0;
+
+            h3 {
+                font-size: 25px;
+            }
+        }
+        .icon1 {
+            display: none;
+        }
+        .icon2 {
+            display: none;
+        }
+        .icon3 {
+            display: none;
+        }
+        .shape-wrap {
+            display: none;
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .summer-overview-inner-card {
+        .content {
+            padding: {
+                left: 60px;
+                right: 60px;
+            };
+            h3 {
+                font-size: 70px;
+            }
+        }
+    }
+    .black-friday-offer-area {
+        &::before {
+            width: 155px;
+        }
+    }
+    .black-friday-offer-logo-image {
+        left: 15px;
+        max-width: 100px;
+    }
+    .black-friday-offer-image {
+        max-width: 230px;
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+    .black-friday-offer-area {
+        &::before {
+            width: 155px;
+        }
+    }
+    .black-friday-offer-logo-image {
+        left: 15px;
+        max-width: 100px;
+    }
+    .black-friday-offer-image {
+        max-width: 230px;
+    }
+
+}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

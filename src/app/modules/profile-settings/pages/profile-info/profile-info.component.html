@@ -1,0 +1,95 @@
+<div class="border p-4 my-profile-page">
+    <div class="head">
+        <h3 class="font-medium">{{'profile_info.title'|translate}}</h3>
+        <small>{{'profile_info.desc'|translate}}</small>
+    </div>
+    <form [formGroup]="profileInfoForm">
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+            <p>{{ error }}</p>
+        </div>
+        <div class="form-group">
+            <label>{{'profile_info.form.labels.name'|translate}}</label>
+            <div class=" position-relative">
+                <input type="text" [ngClass]="{
+                'is-invalid':
+                  (submitted && profileInfoFormControls.name.errors) ||
+                  (profileInfoFormControls.name.touched && profileInfoFormControls.name.invalid)
+            }" formControlName="name" name="name" title="control" class="form-control" autofocus>
+                <div class="input_icon">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div *ngIf="(submitted && profileInfoFormControls.name.errors) ||
+                (profileInfoFormControls.name.touched && profileInfoFormControls.name.invalid)"
+                    class="invalid-feedback">
+                    <div *ngIf="profileInfoFormControls.name.errors.required">
+                        {{"profile_info.form.messages.name"|translate}}
+                    </div>
+                    <div *ngIf="profileInfoFormControls.name.errors?.pattern">
+                        {{"profile_info.form.messages.name_pattern"|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>{{'profile_info.form.labels.phone'|translate}}</label>
+            <div class=" position-relative">
+                <div class=" flex-fill">
+                    <input [ngClass]="{
+                    'is-invalid':
+                      (submitted && profileInfoFormControls.mobileNumber.errors) ||
+                      (profileInfoFormControls.mobileNumber.touched && profileInfoFormControls.mobileNumber.invalid)
+                }" type="text" formControlName="mobileNumber" name="mobileNumber" title="control" class="form-control"
+                        autofocus>
+                    <div class="input_icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div *ngIf="(submitted && profileInfoFormControls.mobileNumber.errors) ||
+                (profileInfoFormControls.mobileNumber.touched && profileInfoFormControls.mobileNumber.invalid)"
+                        class="invalid-feedback">
+                        <div *ngIf="profileInfoFormControls.mobileNumber.errors.required">
+                            {{"profile_info.form.messages.phone"|translate}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>{{'profile_info.form.labels.email'|translate}}</label>
+            <div class=" position-relative">
+                <input [ngClass]="{
+                'is-invalid':
+                  (submitted && profileInfoFormControls.email.errors) ||
+                  (profileInfoFormControls.email.touched && profileInfoFormControls.email.invalid)
+            }" type="email" formControlName="email" name="email" title="control" class="form-control" autofocus>
+                <div class="input_icon">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div *ngIf="(submitted && profileInfoFormControls.email.errors) ||
+            (profileInfoFormControls.email.touched && profileInfoFormControls.email.invalid)" class="invalid-feedback">
+                    <div *ngIf="profileInfoFormControls.email.errors.required">
+                        {{"profile_info.form.messages.email"|translate}}
+
+                    </div>
+                    <div *ngIf="profileInfoFormControls.email.errors.email">
+                        {{"profile_info.form.messages.Email_must_be_valid"|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="form-group  position-relative">
+            <label>Birth data</label>
+            <input type="text" title="control" class="form-control" autofocus>
+            <div class="input_icon">
+                <i class="fa-regular fa-calendar"></i>
+            </div>
+        </div> -->
+        <div>
+            <button type="submit" class="save_btn" [disabled]="loading" tabindex="4" rippleEffect (click)="updateProfile()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                {{'save'|translate}}
+            </button>
+        </div>
+
+    </form>
+</div>

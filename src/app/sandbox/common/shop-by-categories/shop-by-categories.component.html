@@ -1,0 +1,328 @@
+<div
+    class="categories-shop-area pt-70 pb-70"
+    [ngClass]="{'d-none': router.url === '/index-8'}"
+>
+    <div class="container">
+        <!-- <div class="section-heading-title">
+            <h2>Shop By Categories</h2>
+        </div> -->
+        <div class="categories-shop-slides">
+            <owl-carousel-o [options]="categoriesSlides">
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories1.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Grocery</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories2.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Electronics</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories3.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Home Cleaning</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories4.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Beauty Picks</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories5.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Fashion</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories6.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Computers</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories7.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Accessories</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/sandbox/filter-page">
+                                <img src="assets/img/home-six/categories/categories6.png" class="rounded-circle" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/sandbox/filter-page">Computers</a>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+
+<!-- This section for Home Demo - 8 -->
+<div
+    class="grocery-categories-area ptb-100 d-none"
+    [ngClass]="{'d-block': router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="section-heading-title text-start">
+            <h2>Shop By Categories</h2>
+        </div>
+        <div class="grocery-categories-slides">
+            <owl-carousel-o [options]="categoriesSlides">
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories1.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Grocery</a>
+                            </h3>
+                            <span>39 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories2.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Fruits</a>
+                            </h3>
+                            <span>12 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories3.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Home Cleaning</a>
+                            </h3>
+                            <span>10 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories4.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Spices</a>
+                            </h3>
+                            <span>06 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories5.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Bakery</a>
+                            </h3>
+                            <span>08 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories6.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Dried Foods</a>
+                            </h3>
+                            <span>05 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories1.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Grocery</a>
+                            </h3>
+                            <span>39 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories2.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Fruits</a>
+                            </h3>
+                            <span>12 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories3.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Home Cleaning</a>
+                            </h3>
+                            <span>10 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories4.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Spices</a>
+                            </h3>
+                            <span>06 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories5.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Bakery</a>
+                            </h3>
+                            <span>08 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="grocery-categories-card">
+                        <div class="categories-image">
+                            <a routerLink="/shop-full-width-1">
+                                <img src="assets/img/home-eight/categories/categories6.png" alt="image">
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/shop-full-width-1">Dried Foods</a>
+                            </h3>
+                            <span>05 Items</span>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+    <div class="grocery-categories-shape1">
+        <img src="assets/img/home-eight/categories/shape1.png" alt="image">
+    </div>
+    <div class="grocery-categories-shape2">
+        <img src="assets/img/home-eight/categories/shape2.png" alt="image">
+    </div>
+</div>

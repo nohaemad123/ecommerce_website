@@ -1,0 +1,9 @@
+<ng-container *ngIf="displayedComponents?.length && !loading">
+    <div *ngFor="let component of displayedComponents; let i = index; trackBy:trackByFun">
+        <ng-container *ngComponentOutlet="component.component;injector: component.injector">
+        </ng-container>
+    </div>
+</ng-container>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

@@ -1,0 +1,21 @@
+<div class="container pt-5 pb-5" *ngIf="features[0]?.title && features[0]?.desc && features[0]?.img && !loading">
+    <div class="facility-inner border-radius">
+        <div class="row">
+            <div *ngFor="let feature of features" class="col-lg-3 col-sm-6 col-md-6">
+                <div class="single-facility-box">
+                    <div class="icon">
+                        <i [class]="feature.img"></i>
+                        <!-- <img [src]="feature.img ? (imgBaseUrl + feature.img ) :imagesFallbackService.handleFeaturedFallback()"
+    (error)="imagesFallbackService.handleFeaturedFallback($event)"
+        alt="" srcset="" class="feature-img"> -->
+                    </div>
+                    <h3 *ngIf="feature.title">{{ feature?.title }}</h3>
+                    <span *ngIf="feature.desc">{{ feature?.desc }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

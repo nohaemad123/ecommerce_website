@@ -1,0 +1,51 @@
+<div class="retail-banner-area mb-3" *ngIf="carouselImages?.length!=0">
+    <div class="container-fluid">
+        <div class="retail-home-slides">
+            <owl-carousel-o [options]="retailHomeSlides">
+                <ng-template carouselSlide *ngFor="let image of carouselImages">
+                    <div>
+                        <ng-container
+                            *ngIf="image.isExternal; else InternalLink"
+                        >
+                            <a [href]="image.url" target="_blank">
+                                <img
+                                    [src]="
+                                        image.imagePath
+                                            ? imgBaseUrl + image.imagePath
+                                            : imagesFallbackService.handleSliderFallback()
+                                    "
+                                    (error)="
+                                        imagesFallbackService.handleSliderFallback(
+                                            $event
+                                        )
+                                    "
+                                    alt="slider"
+                                />
+                            </a>
+                        </ng-container>
+                        <ng-template #InternalLink>
+                            <a [routerLink]="routingService.navigate(image.url)">
+                                <img
+                                    [src]="
+                                        image.imagePath
+                                            ? imgBaseUrl + image.imagePath
+                                            : imagesFallbackService.handleSliderFallback()
+                                    "
+                                    (error)="
+                                        imagesFallbackService.handleSliderFallback(
+                                            $event
+                                        )
+                                    "
+                                    alt="slider"
+                                />
+                            </a>
+                        </ng-template>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

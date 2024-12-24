@@ -1,0 +1,616 @@
+.facility-inner {
+    background-color: #f9f9f9;
+    border: 1px solid #E4E4E4;
+    padding: {
+        top: 40px;
+        left: 30px;
+        right: 30px;
+        bottom: 10px;
+    };
+    &.border-radius {
+        border-radius: 70px;
+    }
+}
+.single-facility-box {
+    position: relative;
+    padding-left: 85px;
+    margin-bottom: 30px;
+
+    .icon {
+        left: 0;
+        top: 50%;
+        width: 70px;
+        height: 70px;
+        font-size: 25px;
+        position: absolute;
+        text-align: center;
+        border-radius: 50%;
+        color: var(--optionalColor);
+        transform: translateY(-50%);
+        transition: var(--transition);
+        background-color: var(--whiteColor);
+
+        i {
+            left: 0;
+            right: 0;
+            top: 50%;
+            position: absolute;
+            transform: translateY(-50%);
+        }
+        &.bg-f5f5f5 {
+            background-color: #f5f5f5;
+        }
+    }
+    h3 {
+        margin-bottom: 8px;
+        font-size: 22px;
+    }
+    span {
+        display: block;
+        color: var(--optionalColor);
+    }
+    &:hover {
+        .icon {
+            background-color: var(--mainColor);
+            color: var(--whiteColor);
+        }
+    }
+}
+hr {
+    margin: 0;
+    opacity: 1 !important;
+    background-color: #eeeeee !important;
+}
+.d-none {
+    &.d-block {
+        display: block !important;
+    }
+}
+.facility-area-with-color {
+    background-color: #f4ddd6;
+
+    &.bg-ecf5e8 {
+        background-color: #ecf5e8;
+
+        .single-facility-card {
+            .icon {
+                &.bg-f5f5f5 {
+                    background-color: var(--whiteColor);
+                }
+            }
+            &:hover {
+                .icon {
+                    background-color: var(--mainColor);
+                    color: var(--whiteColor);
+                }
+            }
+        }
+    }
+}
+.single-facility-card {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 30px;
+
+    .icon {
+        left: 0;
+        top: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        position: absolute;
+        text-align: center;
+        border-radius: 50%;
+        color: var(--blackColor);
+        transform: translateY(-50%);
+        transition: var(--transition);
+        background-color: var(--whiteColor);
+
+        i {
+            left: 0;
+            right: 0;
+            top: 50%;
+            position: absolute;
+            transform: translateY(-50%);
+        }
+        &.bg-f5f5f5 {
+            background-color: #f5f5f5;
+        }
+    }
+    h3 {
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+    span {
+        display: block;
+        color: var(--optionalColor);
+    }
+    &:hover {
+        .icon {
+            background-color: var(--mainColor);
+            color: var(--whiteColor);
+        }
+    }
+}
+.facility-wrap-inner-box {
+    background-color: var(--mainColor);
+    border-radius: 15px;
+    padding: {
+        top: 80px;
+        left: 50px;
+        right: 50px;
+        bottom: 50px;
+    };
+}
+.facility-wrap-card {
+    margin-bottom: 30px;
+
+    .facility-content {
+        position: relative;
+        padding: 10px 0 10px 100px;
+
+        .icon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+            i {
+                width: 80px;
+                height: 80px;
+                font-size: 38px;
+                line-height: 80px;
+                text-align: center;
+                border-radius: 50px;
+                display: inline-block;
+                color: var(--blackColor);
+                transition: var(--transition);
+                background-color: var(--whiteColor);
+            }
+        }
+        h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--whiteColor);
+        }
+        span {
+            color: var(--whiteColor);
+            font: {
+                weight: 400;
+                size: 15px;
+            };
+        }
+        &:hover {
+            .icon {
+                i {
+                    background-color: var(--blackColor);
+                    color: var(--whiteColor);
+                }
+            }
+        }
+    }
+    &.with-box-style {
+        transition: var(--transition);
+        border: 1px solid #eeeeee;
+        border-radius: 120px;
+        padding: 20px;
+
+        .facility-content {
+            padding: 2px 0 2px 75px;
+
+            .icon {
+                i {
+                    width: 60px;
+                    height: 60px;
+                    font-size: 30px;
+                    line-height: 60px;
+                    border-radius: 50%;
+                    background: #f7f7f7;
+                }
+            }
+            h3 {
+                font-size: 20px;
+                margin-bottom: 8px;
+                color: var(--blackColor);
+                transition: var(--transition);
+            }
+            span {
+                line-height: 1.8;
+                font-size: var(--fontSize);
+                color: var(--optionalColor);
+                transition: var(--transition);
+            }
+            &:hover {
+                .icon {
+                    i {
+                        background: #f7f7f7;
+                        color: var(--blackColor);
+                    }
+                }
+            }
+        }
+        &:hover {
+            background-color: var(--mainColor);
+            border-color: var(--mainColor);
+
+            .facility-content {
+                h3 {
+                    color: var(--whiteColor);
+                }
+                span {
+                    color: var(--whiteColor);
+                }
+            }
+        }
+    }
+}
+.grocery-facility-area {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.grocery-facility-card {
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 100px;
+    transition: var(--transition);
+    background-color: var(--whiteColor);
+    border: 1px solid var(--groceryColor);
+
+    .facility-content {
+        position: relative;
+        padding: 10px 0 10px 110px;
+
+        .icon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+            i {
+                display: inline-block;
+                height: 90px;
+                width: 90px;
+                line-height: 90px;
+                text-align: center;
+                border-radius: 50px;
+                background-color: var(--whiteColor);
+                border: 1px solid var(--groceryColor);
+                color: var(--blackColor);
+                font-size: 45px;
+                transition: var(--transition);
+            }
+        }
+        h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        span {
+            color: var(--optionalColor);
+            transition: var(--transition);
+        }
+        &:hover {
+            .icon {
+                i {
+                    background-color: var(--blackColor);
+                    color: var(--whiteColor);
+                }
+            }
+        }
+    }
+    &.left {
+        position: relative;
+        left: 35px;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:hover {
+        transform: translateY(-5px);
+        background-color: var(--groceryColor);
+
+        .facility-content {
+            h3 {
+                color: var(--whiteColor);
+            }
+            span {
+                color: var(--whiteColor);
+            }
+        }
+    }
+}
+.grocery-facility-image {
+    padding-left: 50px;
+    text-align: center;
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+    
+    .facility-inner {
+        padding: {
+            top: 30px;
+            left: 15px;
+            right: 15px;
+            bottom: 0;
+        };
+        &.border-radius {
+            border-radius: 30px;
+        }
+    }
+    .single-facility-box {
+        padding-left: 70px;
+
+        h3 {
+            margin-bottom: 7px;
+            font-size: 17px;
+        }
+        .icon {
+            width: 55px;
+            height: 55px;
+            font-size: 20px;
+        }
+    }
+    .single-facility-card {
+        padding-left: 0;
+        text-align: center;
+    
+        .icon {
+            top: 0;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            position: relative;
+            transform: translateY(0);
+            margin: {
+                left: auto;
+                right: auto;
+                bottom: 18px;
+            };
+        }
+        h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+    }
+    .facility-wrap-inner-box {
+        padding: {
+            top: 50px;
+            left: 15px;
+            right: 15px;
+            bottom: 20px;
+        };
+    }
+    .facility-wrap-card {
+        text-align: center;
+
+        .facility-content {
+            padding: 0;
+
+            .icon {
+                top: unset;
+                transform: unset;
+                position: relative;
+                margin-bottom: 18px;
+
+                i {
+                    line-height: 60px;
+                    font-size: 25px;
+                    height: 60px;
+                    width: 60px;
+                }
+            }
+            h3 {
+                font-size: 18px;
+            }
+        }
+        &.with-box-style {
+            border-radius: 0;
+
+            .facility-content {
+                padding: 0;
+    
+                h3 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .grocery-facility-card {
+        text-align: center;
+
+        .facility-content {
+            padding: 0;
+
+            .icon {
+                position: relative;
+                left: 0;
+                top: unset;
+                transform: unset;
+                margin-bottom: 15px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+        }
+        &.left {
+            left: 0;
+        }
+    }
+    .grocery-facility-image {
+        padding-left: 0;
+        margin-top: 35px;
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+    .facility-inner {
+        padding: {
+            top: 30px;
+            bottom: 0;
+        };
+        &.border-radius {
+            border-radius: 50px;
+        }
+    }
+    .single-facility-box {
+        padding-left: 75px;
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            font-size: 22px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+    }
+    .single-facility-card {
+        text-align: center;
+        padding-left: 0;
+    
+        .icon {
+            top: 0;
+            position: relative;
+            transform: translateY(0);
+            margin: {
+                left: auto;
+                right: auto;
+                bottom: 18px;
+            };
+        }
+        h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+    }
+    .facility-wrap-card {
+        text-align: center;
+
+        .facility-content {
+            padding: 0;
+
+            .icon {
+                top: unset;
+                transform: unset;
+                position: relative;
+                margin-bottom: 20px;
+
+                i {
+                    line-height: 80px;
+                    font-size: 35px;
+                    height: 80px;
+                    width: 80px;
+                }
+            }
+            h3 {
+                font-size: 20px;
+            }
+        }
+        &.with-box-style {
+            border-radius: 0;
+            
+            .facility-content {
+                padding: 0;
+            }
+        }
+    }
+    .grocery-facility-card {
+        &.left {
+            left: 0;
+        }
+    }
+    .grocery-facility-image {
+        padding-left: 0;
+        margin-top: 35px;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    
+    .facility-inner {
+        padding: {
+            top: 30px;
+            bottom: 0;
+        };
+        &.border-radius {
+            border-radius: 50px;
+        }
+    }
+    .single-facility-box {
+        padding-left: 0;
+
+        .icon {
+            top: 0;
+            transform: unset;
+            position: relative;
+            margin-bottom: 18px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+    }
+    .single-facility-card {
+        text-align: center;
+        padding-left: 0;
+    
+        .icon {
+            top: 0;
+            position: relative;
+            transform: translateY(0);
+            margin: {
+                left: auto;
+                right: auto;
+                bottom: 18px;
+            };
+        }
+    }
+    .facility-wrap-card {
+        text-align: center;
+
+        .facility-content {
+            padding: 0;
+
+            .icon {
+                top: unset;
+                transform: unset;
+                position: relative;
+                margin-bottom: 20px;
+            }
+        }
+        &.with-box-style {
+            border-radius: 0;
+            
+            .facility-content {
+                padding: 0;
+            }
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    
+    .single-facility-box {
+        padding-left: 75px;
+
+        h3 {
+            font-size: 21px;
+        }
+        .icon {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+}

@@ -1,0 +1,7 @@
+<app-navbar [storeLinks]="menuLinks" [storeSettings]="storeSettings"></app-navbar>
+<router-outlet></router-outlet>
+<app-footer [storeLinks]="menuLinks" [storeSettings]="storeSettings"></app-footer>
+<notifier-container></notifier-container>
+<ngx-scrolltop   *ngIf="!(location == '/coming-soon')"></ngx-scrolltop>
+<!-- <div [innerHTML]="footer" #contentContainer>
+</div> -->

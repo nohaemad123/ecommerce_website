@@ -1,0 +1,19 @@
+<!-- cart-model -->
+<div class="sideCart" [@slideInOut]="stateName">
+  <header class="d-flex align-items-center justify-content-between border-bottom">
+      <h5 class="mb-0"> Products (0) </h5>
+      <!-- <span (click)="openCartModel()">
+          <i class="fa-solid fa-xmark"></i>
+      </span> -->
+  </header>
+  <main [ngClass]="!products.length ? 'vh-100 d-flex align-items-center justify-content-center':null ">
+      <div *ngIf="products">
+              <app-cart-page></app-cart-page>
+      </div>
+      <div class="empty-cart" *ngIf="!products.length">
+          <p>Your cart is currently empty.</p>
+          <a routerLink="/shop-full-width-1" class="default-btn">Return to Shop</a>
+      </div>
+  </main>
+</div>
+<div *ngIf="isCart" class="overlay"></div>

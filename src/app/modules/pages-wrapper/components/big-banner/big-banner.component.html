@@ -1,0 +1,15 @@
+<div class="summer-overview-area" *ngIf="sectionData && !loading">
+    <div class="container">
+        <div class="summer-overview-inner-card" [ngStyle]="{ 'background-image':
+        sectionData.img ? ('url(' + (imgBaseUrl + sectionData.img ) + ')') : imagesFallbackService.handleBannerFallback()}">
+            <div class="content">
+                <!-- <span>{{ sectionData?.description }}</span> -->
+                <h3>{{ sectionData.title }}</h3>
+                <!-- <a *ngIf="sectionData?.btnText" [routerLink]="sectionData?.link" class="default-btn-with-border-radius">{{ sectionData?.btnText }}</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loading-container" *ngIf="loading">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+</div>

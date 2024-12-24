@@ -1,0 +1,63 @@
+
+<div
+    class="subscribe-area pb-100"
+    [ngClass]="{'d-none': router.url === '/index-4' || router.url === '/index-5' || router.url === '/index-7' || router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="subscribe-inner" *ngFor="let Content of bgImage;" style="background-image: url({{Content.img}});">
+            <div class="content">
+                <h2>Sign up now & get 10% off</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="input-newsletter" placeholder="Enter your email address" required>
+                    <button type="submit"><i class="far fa-paper-plane"></i>SUBSCRIBE NOW</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--This section for Home Demo - 4 -->
+<div
+    class="crafts-subscribe-area pb-100 d-none"
+    [ngClass]="{'d-block': router.url === '/index-4' || router.url === '/index-5'}"
+>
+    <div class="container">
+        <div
+            class="crafts-subscribe-inner-box"
+            [ngClass]="{'with-bg-two': router.url === '/index-4'}"
+        >
+            <div class="content">
+                <h2>Sign up now & get 10% off</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="input-newsletter" placeholder="Enter your email address" name="EMAIL" required autocomplete="off">
+                    <button type="submit"><i class="far fa-paper-plane"></i>SUBSCRIBE NOW</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--This section for Home Demo - 7 -->
+<div
+    class="subscribe-wrap-area ptb-100 d-none"
+    [ngClass]="{'d-block': router.url === '/index-7' || router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-12">
+                <div class="subscribe-wrap-content">
+                    <h2>Newsletter Sign Up</h2>
+                    <p>Sign up for our newsletter and get 20% off!</p>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 subscribe-wrap-form">
+                <form class="newsletter-form">
+                    <input type="email" class="input-newsletter" placeholder="Enter your email address" name="EMAIL" required autocomplete="off">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

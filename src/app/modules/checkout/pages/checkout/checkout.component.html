@@ -1,0 +1,332 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>{{ "checkout.title" | translate }}</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li>
+                        <a [routerLink]="routingService.navigate('home')"> {{ "checkout.home" | translate }}</a>
+                    </li>
+                    <li>{{ "checkout.title" | translate }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products Details -->
+<div class="products-details-area ptb-70 position-relative checkout_page">
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="loading-container" *ngIf="loadOrderFlag">
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+            </div>
+            <div class="col-12 col-md-12 col-sm-12 col-xl-9 col-lg-8">
+
+
+                <!-- Shipping Address -->
+                <div class="shipping_address" >
+
+
+
+
+                    <div class="border p-4 my-profile-page my_address" >
+                        <app-empty-state  *ngIf="!addressesData?.length && !loadingAddress" [emptyStateData]="addressEmptyStateData" (btnClickEmitter)="openForm('ADD')"></app-empty-state>
+                        <div class="loading-container" *ngIf="loadingAddress">
+                            <span class="spinner-border spinner-border-sm mr-1"></span>
+                        </div>
+                        <div class="head d-flex align-items-center justify-content-between mb-2" *ngIf="addressesData?.length">
+                            <h3 class="font-medium mb-0">
+                                {{ "checkout.Shipping_Address" | translate }}
+                            </h3>
+                            <!-- add_address -->
+                            <div class="add_btn" *ngIf="!isEditClicked">
+                                <button title="btn" type="text" (click)="openForm('ADD')">
+                                    <i class="fa-regular fa-plus me-2"></i>
+                                    <span>{{
+                                        "AddNewAddress" | translate
+                                        }}</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- add_form -->
+                        <div *ngIf="isOpen" class="add_form mb-3">
+                            <app-address-form (updateList)="onUpdateAddressList($event)" [addressData]="addressData"></app-address-form>
+                        </div>
+                        <!-- listOfAddress -->
+                        <div class="listOfAddress" >
+                            <div class="grid-container">
+                                <div *ngFor="let address of addressesData">
+                                    <app-address-card (updateList)="
+                                            onUpdateAddressList($event)
+                                        " (editAddressEmitter)="
+                                            onEditAddress($event)
+                                        " [address]="address"></app-address-card>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- your Orders -->
+                <div class="border p-4 my-profile-page my_orders mt-3" *ngIf="cartProducts?.length">
+                    <div class="head d-flex align-items-center justify-content-between mb-4">
+                        <h3 class="font-medium mb-0">
+                            {{ "checkout.Your_Order" | translate }}
+                        </h3>
+                    </div>
+                    <!-- product -->
+                    <div class="pro_info d-flex align-items-center justify-content-start gap-3">
+                        <div class="d-flex align-items-center gap-3" *ngFor="let cartProduct of cartProducts">
+                            <div class="img position-relative">
+                                <img (error)="imagesFallbackService.handleProductFallback($event)"
+                                    [src]="cartProduct?.image ? (imgBaseUrl + cartProduct?.image) : imagesFallbackService.handleProductFallback()"
+                                    width="120" alt="" />
+                                <div class="count">
+                                    <span>{{ cartProduct.quantity }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- go to my orders list -->
+                    <div class="list_orders">
+                        <a title="btn" [routerLink]="routingService.navigate('cart')" type="text" class="font-medium">
+                            <i class="fa-solid fa-angle-left"></i>
+                            <span class="mx-1"></span>
+                            <span>
+                                {{ "checkout.My_orders_List" | translate }}
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- paymentMethods -->
+                <div class="border p-4 my-profile-page paymentMethods mt-3" *ngIf="paymentTypes?.length">
+                    <div class="head d-flex align-items-center justify-content-between mb-4">
+                        <h3 class="font-medium mb-0">
+                            {{ "checkout.Payment_Methods" | translate }}
+                        </h3>
+                    </div>
+                    <div>
+                        <div class="border p-3 d-flex align-items-center justify-content-between mb-3" *ngFor="let type of paymentTypes">
+                            <div class="select_address" >
+                                <label class="d-flex align-items-center gap-2">
+                                    <input type="radio" name="radio-group" [checked]="placeOrderPayload.paymentTypeId === type.id" (change)="
+                                            selectPaymentType(type.id)" />
+                                    <span>{{ type.name }}</span>
+                                </label>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <!-- <div class="border p-3 d-flex align-items-center justify-content-between mb-3" *ngIf="false">
+                            <div class="select_address">
+                                <label class="d-flex align-items-center gap-2">
+                                    <input type="radio" name="radio-group" (change)="
+                                            selectPaymentType(
+                                                paymentTypes[1].id
+                                            )
+                                        " />
+                                    <span>{{ paymentTypes[1].name }} </span>
+                                </label>
+                            </div>
+                            <div class="d-flex align-items-center gap-1">
+                                <img src="assets/img/642669a.png" width="40" alt="" />
+                                <img src="assets/img/85c2642.png" width="40" alt="" />
+                            </div>
+                        </div> -->
+                        <div *ngIf="selectedOption === 'formAccount' && false" class="add_form mb-3">
+                            <form>
+                                <div class="d-flex align-items-center gap-3 formAccount">
+                                    <div class="form-group position-relative">
+                                        <label>Street</label>
+                                        <input type="text" title="control" class="form-control" autofocus />
+                                        <div class="input_icon">
+                                            <i class="fa-regular fa-credit-card"></i>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-group position-relative">
+                                            <label>Neighborhood number</label>
+                                            <input type="text" title="control" class="form-control" autofocus />
+                                            <div class="input_icon">
+                                                <i class="fa-regular fa-calendar-days"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group position-relative">
+                                            <label>Neighborhood number</label>
+                                            <input type="text" title="control" class="form-control" autofocus />
+                                            <div class="input_icon">
+                                                <i class="fa-solid fa-check-to-slot"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me">
+                                        Save my card
+                                    </label>
+                                </div>
+                                <div class="add_btn add_btn_s">
+                                    <button title="btn" type="submit">
+                                        Confirm
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-sm-12 col-xl-3 col-lg-4" *ngIf="cartProducts?.length">
+                <div class="border p-3 mt-mm">
+                    <!-- add-icon -->
+                    <div class="add_code mb-4">
+                        <form>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="form-group position-relative">
+                                    <label>
+                                        {{
+                                        "checkout.Add_discount_code"
+                                        | translate
+                                        }}
+                                    </label>
+                                    <input type="text" title="control" class="form-control" autofocus
+                                        [(ngModel)]="couponCode" [ngModelOptions]="{ standalone: true }" />
+                                </div>
+                                <div class="add_btn add_btn_s">
+                                    <button (click)="applyCoupon()" [disabled]="loading">{{
+                                        "shoppingcart.apply_coupon"
+                                        | translate
+                                        }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- notes -->
+                    <div class="add_notes position-relative mb-4">
+                        <form>
+                            <div>
+                                <div class="form-group position-relative">
+                                    <label>
+                                        {{
+                                        "checkout.Your_comments" | translate
+                                        }}
+                                        <small>
+                                            {{
+                                            "checkout.optional" | translate
+                                            }}
+                                        </small>
+                                    </label>
+                                    <textarea [(ngModel)]="placeOrderPayload.orderNote"  [ngModelOptions]="{standalone: true}" rows="6" title="control" class="form-control" autofocus></textarea>
+                                </div>
+                                <div class="add_btn add_btn_s">
+                                    <button title="btn" type="submit">
+                                        <i class="fa-regular fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- order_summary -->
+                    <div class="p-2 delivery_info">
+                        <div>
+                            <h4>
+                                {{ "checkout.Invoice_details" | translate }}
+                            </h4>
+                        </div>
+                        <div class="summary_t">
+                            <div class="mb-2 font-medium d-flex align-items-center gap-2">
+                                <span>
+                                    {{
+                                    "shoppingcart.Subtotal" | translate
+                                    }}</span>
+                                <strong class="font-medium">
+                                    {{
+                                    +subtotal.toFixed(2)
+                                    | customCurrency : currentCurrency
+                                    }}
+                                </strong>
+                            </div>
+
+
+                            <div class="mb-2 font-medium d-flex align-items-center gap-2">
+                                <span>
+                                    {{
+                                    "shoppingcart.tax" | translate
+                                    }}</span>
+                                <strong class="font-medium">
+                                    {{
+                                    +tax.toFixed(2)
+                                    | customCurrency : currentCurrency
+                                    }}
+                                </strong>
+                            </div>
+                            <div class="mb-2 font-medium d-flex align-items-center gap-2">
+                                <span>
+                                    {{
+                                    "shoppingcart.vat" | translate
+                                    }}</span>
+                                <strong class="font-medium">
+                                    {{
+                                    +taxVat.toFixed(2)
+                                    | customCurrency : currentCurrency
+                                    }}
+                                </strong>
+                            </div>
+                            <div class="mb-2 font-medium d-flex align-items-center gap-2">
+                                <span>
+                                    {{
+                                    "shoppingcart.shippingCost" | translate
+                                    }}</span>
+                                <strong class="font-medium">
+                                    {{
+                                    +shippingCost.toFixed(2)
+                                    | customCurrency : currentCurrency
+                                    }}
+                                </strong>
+                            </div>
+
+                            <div  class="mb-2 font-medium d-flex align-items-center discountColumn gap-3" *ngIf="discount > 0">
+                                <span> {{'shoppingcart.couponCode_discount'|translate}} </span>
+                                <strong class="font-medium ">
+                                    {{
+                                    discount
+                                    | customCurrency : currentCurrency
+                                    }}
+                                </strong>
+                            </div>
+
+                            <div class="border-top pt-3 mt-3 total align-items-center">
+                                <div class="mb-2 d-flex align-items-center gap-2">
+                                    <span>{{
+                                        "shoppingcart.Total" | translate
+                                        }}</span>
+                                    <strong>{{
+                                        total | customCurrency : currentCurrency
+                                        }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add_btn add_btn_s add_btn_c mt-3">
+                        <button title="btn" (click)="placeOrder()">
+                            <span *ngIf="placeOrderLoading" class="spinner-border spinner-border-sm mr-1"></span>
+
+                            {{ "checkout.Confirm_Order" | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,150 @@
+
+
+.retail-banner-area{
+    background: #eee;
+    padding: 20px 0;
+    .retail-home-slides{
+
+        // img{
+        //     height: 450px;
+        // }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .retail-banner-area {
+        border-top: none;
+    
+        .container-fluid {
+            padding: {
+                top: 0;
+                left: calc(var(--bs-gutter-x) * 0.5);
+                right: calc(var(--bs-gutter-x) * 0.5);
+            };
+        }
+    }
+    .retail-home-slides{
+        img{
+            height:auto !important;
+            min-height: 0 !important;
+        }
+    }
+    
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {
+
+    .retail-banner-area {
+        .container-fluid {
+            max-width: 540px;
+        }
+    }
+
+}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .retail-banner-area {
+        border-top: none;
+    
+        .container-fluid {
+            max-width: 720px;
+            padding: {
+                top: 40px;
+                left: calc(var(--bs-gutter-x) * 0.5);
+                right: calc(var(--bs-gutter-x) * 0.5);
+            };
+        }
+    }
+    .retail-banner-item {
+        border-radius: 15px;
+        padding: {
+            top: 80px;
+            left: 30px;
+            right: 30px;
+            bottom: 150px;
+        };
+        .content {
+            max-width: 100%;
+    
+            h1 {
+                font-size: 50px;
+            }
+            span {
+                font-size: 17px;
+            }
+            .banner-btn {
+                margin-top: 20px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .retail-banner-area {
+        .container-fluid {
+            padding: {
+                left: 15px;
+                right: 15px;
+            };
+        }
+    }
+    .retail-banner-item {
+        padding: {
+            top: 100px;
+            left: 100px;
+            right: 100px;
+            bottom: 100px;
+        };
+        .content {
+            max-width: 750px;
+    
+            h1 {
+                font-size: 60px;
+            }
+            span {
+                font-size: 18px;
+            }
+            .banner-btn {
+                margin-top: 20px;
+            }
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {
+
+    .retail-banner-area {
+        .container-fluid {
+            max-width: 1900px;
+            padding: {
+                left: 100px;
+                right: 100px;
+            };
+        }
+    }
+
+}
+
+.loading-container {
+    padding-top: 15%;
+    padding-bottom: 15%;
+    text-align: center;
+    span {
+       color: var(--mainColor);
+    }
+ }
+ 

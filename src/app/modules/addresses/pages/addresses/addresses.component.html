@@ -1,0 +1,34 @@
+<div class="border p-4 my-profile-page my_address">
+    <div class="head">
+        <h3 class="font-medium">{{ 'MyAddresses' | translate }}</h3>
+        <small>{{ 'ManageAndEdit' | translate }}</small>
+    </div>
+
+    <div class="add_btn mt-3" *ngIf="!isEditClicked">
+        <button title="btn" type="text" (click)="openForm('ADD')" >
+            <i class="fa-regular fa-plus me-2"></i>
+            <span>{{ 'AddNewAddress' | translate }}</span>
+        </button>
+    </div>
+    
+    <app-address-form *ngIf="isOpen"
+    (updateList)="onUpdateAddressList($event)"
+    [addressData]="addressData"
+    ></app-address-form>
+
+    <div class="listOfAddress" *ngIf="addressesData?.length && !loading">
+        <h3 class="font-medium mt-3 mb-3">{{ 'AddressesList' | translate }}</h3>
+        <div class="grid-container">
+            <div *ngFor="let address of addressesData">
+                <app-address-card
+                (updateList)="onUpdateAddressList($event)"
+                (editAddressEmitter)="onEditAddress($event)"
+                [address]="address" ></app-address-card>
+            </div>
+        </div>
+    </div>
+    <app-empty-state  *ngIf="!addressesData?.length && !loading" [emptyStateData]="emptyStateData" (btnClickEmitter)="openForm('ADD')"></app-empty-state>
+    <div class="loading-container" *ngIf="loading">
+        <span class="spinner-border spinner-border-sm mr-1"></span>
+    </div>
+</div>

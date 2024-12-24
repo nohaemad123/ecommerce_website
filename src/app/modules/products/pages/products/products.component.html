@@ -1,0 +1,66 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>{{'products.ShopFilterSidebar'|translate}}</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a [routerLink]="routingService.navigate('home')">{{'products.home'|translate}}</a></li>
+                    <li>{{'products.title'|translate}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products -->
+<div class="products-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12  box-filter-f">
+                <app-products-filter (filterChanged)="onFilterChanged($event)"
+                    [filterCriteria]="filterCriteria"></app-products-filter>
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="vaxim-grid-sorting row align-items-center">
+                    <div class="col-4 col-lg-6 col-md-6 col-sm-4 result-count">
+                        <div class="text-result">
+                            <!-- <p>We found <span class="count">12</span> products available for you</p> -->
+                        </div>
+                        <div class="btn-m-filter btn-r-filter">
+                            <button type="" (click)="openFilter()" class="btn-filter"><i
+                                    class="fa-solid fa-filter"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-8 col-lg-6 col-md-6 col-sm-8 ordering">
+                        <div class="select-box">
+                            <label>{{'SORTBY'|translate}}</label>
+                            <select [(ngModel)]="filterCriteria.sortBy" (ngModelChange)="onSort($event)">
+                                <option *ngFor="let sort of sortList" [ngValue]="sort.id">{{ sort.name | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="productsData?.length && !loading">
+                    <div class="col-6 col-xl-3 col-lg-4 col-md-4 col-sm-6"
+                        *ngFor="let product of productsData | paginate: { itemsPerPage: params.limit, currentPage: params.page, totalItems: totalProducts}">
+                        <app-product-card-one [cardData]="product"></app-product-card-one>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="pagination-area">
+                            <pagination-controls previousLabel="" nextLabel="" [responsive]="true" [maxSize]="9"
+                                (pageChange)="onPageChange($event)"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+                <app-empty-state  *ngIf="!productsData?.length && !loading" [emptyStateData]="emptyStateData" (btnClickEmitter)="onBrowse()"></app-empty-state>
+                <div class="loading-container" *ngIf="loading">
+                    <span class="spinner-border spinner-border-sm mr-1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
